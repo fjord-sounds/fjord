@@ -19,7 +19,7 @@ jobs:
           - { name: Windows, os: windows-latest, artefacts: "build/Fjord_artefacts/Release" }
           - { name: Linux,   os: ubuntu-latest,  artefacts: "build/Fjord_artefacts/Release" }
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Tag matches CMakeLists.txt
         shell: bash
@@ -59,7 +59,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: actions/download-artifact@v4
         with:
           path: dist
