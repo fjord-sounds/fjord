@@ -71,7 +71,8 @@ namespace fjord::dsp
 
         float lookup (float phase01) const
         {
-            const float pos = phase01 * (float) size;
+            // phase01 may round up to exactly 1.0 (or arrive slightly off): keep the index inside the table
+            const float pos = std::clamp (phase01 * (float) size, 0.0f, (float) size - 1.0e-3f);
             const int i = (int) pos;
             const float frac = pos - (float) i;
             return table[(size_t) i] + frac * (table[(size_t) i + 1] - table[(size_t) i]);

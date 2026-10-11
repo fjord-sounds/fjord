@@ -569,6 +569,18 @@ static int modulePresetTests()
 }
 
 // Hosts may send bigger blocks than announced in prepareToPlay (and odd sizes): must stay clean.
+// The LFO phase can round up to exactly 1.0; the table lookup must stay inside its table (this used to read past
+// the end, which gave NaN or a crash on some compilers/CPUs).
+static int sineTableTest()
+{
+    const auto& t = fjord::dsp::SineTable::get();
+    bool ok = true;
+    for (float p : { 0.0f, 0.5f, std::nextafter (1.0f, 0.0f), 1.0f, 1.0f + 1.0e-6f, -1.0e-6f })
+        ok &= std::isfinite (t.lookup (p)) && std::abs (t.lookup (p)) <= 1.0001f;
+    printf ("sine_table_bounds %s\n", ok ? "OK" : "FAIL");
+    return ok ? 0 : 1;
+}
+
 static int oversizedBlockTest()
 {
     FjordProcessor proc;
@@ -890,7 +902,7 @@ int main (int argc, char** argv)
         }
     }
 
-    int failures = stuckNoteTests() + arpSwitchTest() + fxPresetTests() + lockTests() + oversizedBlockTest() + modulePresetTests();
+    int failures = stuckNoteTests() + arpSwitchTest() + fxPresetTests() + lockTests() + oversizedBlockTest() + modulePresetTests() + sineTableTest();
     for (auto& c : cases)
         failures += render (c, outDir) ? 0 : 1;
 
