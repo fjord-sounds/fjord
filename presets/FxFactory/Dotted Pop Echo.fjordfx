@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxPreset name="Dotted Pop Echo" category="Echo" fxOrder="drive,crush,eq,comp,chorus,phaser,flanger,delay,reverb,width">
+  <Param id="fx_delay_damp" value="0.5016"/>
+  <Param id="fx_delay_div" value="11"/>
+  <Param id="fx_delay_feedback" value="0.3552"/>
+  <Param id="fx_delay_mix" value="0.2158"/>
+  <Param id="fx_delay_on" value="1"/>
+  <Param id="fx_reverb_decay" value="2.247"/>
+  <Param id="fx_reverb_mix" value="0.1845"/>
+  <Param id="fx_reverb_on" value="1"/>
+  <Param id="fx_reverb_size" value="0.6067"/>
+</FjordFxPreset>

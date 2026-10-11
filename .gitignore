@@ -1,0 +1,20 @@
+# build output and downloaded dependencies
+build/
+external/JUCE/
+
+# local-only: AI project notes and the code that generated the factory presets
+CLAUDE.md
+tools/preset-gen/
+
+# tool dependencies
+node_modules/
+__pycache__/
+
+# OS / editor files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# README audio videos (made by tools/demos/make_demos.py, uploaded through the GitHub editor, not stored)
+docs/audio/video/

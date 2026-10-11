@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxModulePresets effect="phaser">
+  <Preset name="Slow Swirl" category="Classic">
+    <Param id="rate" value="0.1529"/>
+    <Param id="depth" value="0.6068"/>
+    <Param id="feedback" value="0.2975"/>
+    <Param id="mix" value="0.5015"/>
+  </Preset>
+  <Preset name="Seventies Phase" category="Classic">
+    <Param id="rate" value="0.4103"/>
+    <Param id="depth" value="0.7049"/>
+    <Param id="feedback" value="0.4522"/>
+    <Param id="mix" value="0.5128"/>
+  </Preset>
+  <Preset name="Small Stone" category="Classic">
+    <Param id="rate" value="0.5864"/>
+    <Param id="depth" value="0.8133"/>
+    <Param id="feedback" value="0.5985"/>
+    <Param id="mix" value="0.5038"/>
+  </Preset>
+  <Preset name="Gentle Phase" category="Classic">
+    <Param id="rate" value="0.2532"/>
+    <Param id="depth" value="0.4001"/>
+    <Param id="feedback" value="0.2022"/>
+    <Param id="mix" value="0.3587"/>
+  </Preset>
+  <Preset name="Dreamy Sweep" category="Classic">
+    <Param id="rate" value="0.08143"/>
+    <Param id="depth" value="0.7912"/>
+    <Param id="feedback" value="0.4115"/>
+    <Param id="mix" value="0.455"/>
+  </Preset>
+  <Preset name="Funky Clav Phase" category="Classic">
+    <Param id="rate" value="0.918"/>
+    <Param id="depth" value="0.5875"/>
+    <Param id="feedback" value="0.4928"/>
+    <Param id="mix" value="0.5579"/>
+  </Preset>
+  <Preset name="Glacial" category="Slow">
+    <Param id="rate" value="0.02984"/>
+    <Param id="depth" value="0.9246"/>
+    <Param id="feedback" value="0.4882"/>
+    <Param id="mix" value="0.4894"/>
+  </Preset>
+  <Preset name="Tide" category="Slow">
+    <Param id="rate" value="0.04914"/>
+    <Param id="depth" value="0.7177"/>
+    <Param id="feedback" value="0.3494"/>
+    <Param id="mix" value="0.3881"/>
+  </Preset>
+  <Preset name="Breathing" category="Slow">
+    <Param id="rate" value="0.1026"/>
+    <Param id="depth" value="0.5847"/>
+    <Param id="feedback" value="0.2479"/>
+    <Param id="mix" value="0.4465"/>
+  </Preset>
+  <Preset name="Long Shadow" category="Slow">
+    <Param id="rate" value="0.06084"/>
+    <Param id="depth" value="0.9702"/>
+    <Param id="feedback" value="0.702"/>
+    <Param id="mix" value="0.4"/>
+  </Preset>
+  <Preset name="Jet Phase" category="Intense">
+    <Param id="rate" value="0.2035"/>
+    <Param id="depth" value="0.9767"/>
+    <Param id="feedback" value="0.8518"/>
+    <Param id="mix" value="0.591"/>
+  </Preset>
+  <Preset name="Resonant Sweep" category="Intense">
+    <Param id="rate" value="0.3066"/>
+    <Param id="depth" value="0.876"/>
+    <Param id="feedback" value="0.9615"/>
+    <Param id="mix" value="0.4877"/>
+  </Preset>
+  <Preset name="Whirl" category="Intense">
+    <Param id="rate" value="1.968"/>
+    <Param id="depth" value="0.8151"/>
+    <Param id="feedback" value="0.7045"/>
+    <Param id="mix" value="0.4996"/>
+  </Preset>
+  <Preset name="Rotary" category="Intense">
+    <Param id="rate" value="3.422"/>
+    <Param id="depth" value="0.6018"/>
+    <Param id="feedback" value="0.4108"/>
+    <Param id="mix" value="0.6135"/>
+  </Preset>
+  <Preset name="Bubbles" category="Intense">
+    <Param id="rate" value="4.46"/>
+    <Param id="depth" value="0.4885"/>
+    <Param id="feedback" value="0.5914"/>
+    <Param id="mix" value="0.3914"/>
+  </Preset>
+  <Preset name="Space Laser" category="Intense">
+    <Param id="rate" value="1.475"/>
+    <Param id="depth" value="1.0"/>
+    <Param id="feedback" value="0.9896"/>
+    <Param id="mix" value="0.4407"/>
+  </Preset>
+  <Preset name="Subtle Motion" category="Subtle">
+    <Param id="rate" value="0.206"/>
+    <Param id="depth" value="0.3065"/>
+    <Param id="feedback" value="0.1025"/>
+    <Param id="mix" value="0.2562"/>
+  </Preset>
+  <Preset name="Light Shimmer" category="Subtle">
+    <Param id="rate" value="0.7068"/>
+    <Param id="depth" value="0.2937"/>
+    <Param id="feedback" value="0.1955"/>
+    <Param id="mix" value="0.2028"/>
+  </Preset>
+  <Preset name="Background Phase" category="Subtle">
+    <Param id="rate" value="0.1202"/>
+    <Param id="depth" value="0.4978"/>
+    <Param id="feedback" value="0.3022"/>
+    <Param id="mix" value="0.1948"/>
+  </Preset>
+  <Preset name="Thin Veil" category="Subtle">
+    <Param id="rate" value="0.3415"/>
+    <Param id="depth" value="0.2474"/>
+    <Param id="feedback" value="0.4946"/>
+    <Param id="mix" value="0.2963"/>
+  </Preset>
+  <Preset name="Full Phase" category="Classic">
+    <Param id="rate" value="0.5068"/>
+    <Param id="depth" value="0.9973"/>
+    <Param id="feedback" value="0.5087"/>
+    <Param id="mix" value="1.0"/>
+  </Preset>
+</FjordFxModulePresets>

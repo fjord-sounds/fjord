@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxPreset name="Cassette" category="Lo-Fi" fxOrder="drive,crush,eq,comp,chorus,phaser,flanger,delay,reverb,width">
+  <Param id="fx_chorus_depth" value="0.4918"/>
+  <Param id="fx_chorus_mix" value="0.3048"/>
+  <Param id="fx_chorus_on" value="1"/>
+  <Param id="fx_chorus_rate" value="0.9218"/>
+  <Param id="fx_crush_bits" value="12.0"/>
+  <Param id="fx_crush_mix" value="0.4065"/>
+  <Param id="fx_crush_on" value="1"/>
+  <Param id="fx_crush_rate" value="1.482"/>
+  <Param id="fx_drive_amount" value="0.2539"/>
+  <Param id="fx_drive_on" value="1"/>
+  <Param id="fx_drive_tone" value="0.3975"/>
+  <Param id="fx_drive_type" value="0"/>
+  <Param id="fx_eq_highcut" value="8896.0"/>
+  <Param id="fx_eq_lowcut" value="81.01"/>
+  <Param id="fx_eq_on" value="1"/>
+  <Param id="fx_reverb_mix" value="0.0"/>
+  <Param id="fx_reverb_on" value="1"/>
+</FjordFxPreset>

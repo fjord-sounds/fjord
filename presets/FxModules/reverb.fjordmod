@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxModulePresets effect="reverb">
+  <Preset name="Small Room" category="Room">
+    <Param id="size" value="0.245"/>
+    <Param id="decay" value="0.5934"/>
+    <Param id="damp" value="0.5145"/>
+    <Param id="predelay" value="0.004959"/>
+    <Param id="width" value="0.7934"/>
+    <Param id="mix" value="0.1784"/>
+  </Preset>
+  <Preset name="Bedroom" category="Room">
+    <Param id="size" value="0.305"/>
+    <Param id="decay" value="0.8827"/>
+    <Param id="damp" value="0.6415"/>
+    <Param id="predelay" value="0.007874"/>
+    <Param id="width" value="0.8781"/>
+    <Param id="mix" value="0.2055"/>
+  </Preset>
+  <Preset name="Studio Live Room" category="Room">
+    <Param id="size" value="0.3959"/>
+    <Param id="decay" value="1.114"/>
+    <Param id="damp" value="0.4481"/>
+    <Param id="predelay" value="0.009897"/>
+    <Param id="width" value="1.027"/>
+    <Param id="mix" value="0.194"/>
+  </Preset>
+  <Preset name="Wooden Room" category="Room">
+    <Param id="size" value="0.3521"/>
+    <Param id="decay" value="1.291"/>
+    <Param id="damp" value="0.7035"/>
+    <Param id="predelay" value="0.01203"/>
+    <Param id="width" value="0.9741"/>
+    <Param id="mix" value="0.2214"/>
+  </Preset>
+  <Preset name="Tiled Bathroom" category="Room">
+    <Param id="size" value="0.2919"/>
+    <Param id="decay" value="1.625"/>
+    <Param id="damp" value="0.1511"/>
+    <Param id="predelay" value="0.00399"/>
+    <Param id="width" value="0.8922"/>
+    <Param id="mix" value="0.2495"/>
+  </Preset>
+  <Preset name="Bright Plate" category="Plate">
+    <Param id="size" value="0.5065"/>
+    <Param id="decay" value="1.823"/>
+    <Param id="damp" value="0.2007"/>
+    <Param id="predelay" value="0.01956"/>
+    <Param id="width" value="1.201"/>
+    <Param id="mix" value="0.2139"/>
+  </Preset>
+  <Preset name="Vocal Plate" category="Plate">
+    <Param id="size" value="0.5402"/>
+    <Param id="decay" value="2.263"/>
+    <Param id="damp" value="0.3431"/>
+    <Param id="predelay" value="0.02996"/>
+    <Param id="width" value="1.089"/>
+    <Param id="mix" value="0.2499"/>
+  </Preset>
+  <Preset name="Dark Plate" category="Plate">
+    <Param id="size" value="0.4955"/>
+    <Param id="decay" value="2.042"/>
+    <Param id="damp" value="0.7652"/>
+    <Param id="predelay" value="0.02053"/>
+    <Param id="width" value="1.008"/>
+    <Param id="mix" value="0.2226"/>
+  </Preset>
+  <Preset name="Snare Plate" category="Plate">
+    <Param id="size" value="0.4521"/>
+    <Param id="decay" value="1.401"/>
+    <Param id="damp" value="0.2982"/>
+    <Param id="predelay" value="0.0"/>
+    <Param id="width" value="1.197"/>
+    <Param id="mix" value="0.3078"/>
+  </Preset>
+  <Preset name="Concert Hall" category="Hall">
+    <Param id="size" value="0.7781"/>
+    <Param id="decay" value="3.179"/>
+    <Param id="damp" value="0.5016"/>
+    <Param id="predelay" value="0.03086"/>
+    <Param id="width" value="1.23"/>
+    <Param id="mix" value="0.2565"/>
+  </Preset>
+  <Preset name="Warm Hall" category="Hall">
+    <Param id="size" value="0.7298"/>
+    <Param id="decay" value="3.052"/>
+    <Param id="damp" value="0.6824"/>
+    <Param id="predelay" value="0.02469"/>
+    <Param id="width" value="1.127"/>
+    <Param id="mix" value="0.2567"/>
+  </Preset>
+  <Preset name="Church" category="Hall">
+    <Param id="size" value="0.923"/>
+    <Param id="decay" value="5.492"/>
+    <Param id="damp" value="0.4433"/>
+    <Param id="predelay" value="0.03929"/>
+    <Param id="width" value="1.308"/>
+    <Param id="mix" value="0.2944"/>
+  </Preset>
+  <Preset name="Big Hall" category="Hall">
+    <Param id="size" value="0.8638"/>
+    <Param id="decay" value="4.126"/>
+    <Param id="damp" value="0.5483"/>
+    <Param id="predelay" value="0.03529"/>
+    <Param id="width" value="1.275"/>
+    <Param id="mix" value="0.2803"/>
+  </Preset>
+  <Preset name="Stadium" category="Hall">
+    <Param id="size" value="0.9833"/>
+    <Param id="decay" value="6.472"/>
+    <Param id="damp" value="0.3921"/>
+    <Param id="predelay" value="0.06015"/>
+    <Param id="width" value="1.5"/>
+    <Param id="mix" value="0.3019"/>
+  </Preset>
+  <Preset name="Shimmer Cloud" category="Ambient">
+    <Param id="size" value="1.0"/>
+    <Param id="decay" value="11.81"/>
+    <Param id="damp" value="0.3059"/>
+    <Param id="predelay" value="0.0496"/>
+    <Param id="width" value="1.5"/>
+    <Param id="mix" value="0.3982"/>
+  </Preset>
+  <Preset name="Endless Fjord" category="Ambient">
+    <Param id="size" value="1.0"/>
+    <Param id="decay" value="20.0"/>
+    <Param id="damp" value="0.5006"/>
+    <Param id="predelay" value="0.07794"/>
+    <Param id="width" value="1.484"/>
+    <Param id="mix" value="0.4374"/>
+  </Preset>
+  <Preset name="Frozen Lake" category="Ambient">
+    <Param id="size" value="0.9471"/>
+    <Param id="decay" value="9.253"/>
+    <Param id="damp" value="0.2567"/>
+    <Param id="predelay" value="0.09731"/>
+    <Param id="width" value="1.441"/>
+    <Param id="mix" value="0.3767"/>
+  </Preset>
+  <Preset name="Dark Cave" category="Ambient">
+    <Param id="size" value="0.9065"/>
+    <Param id="decay" value="7.862"/>
+    <Param id="damp" value="0.8599"/>
+    <Param id="predelay" value="0.07011"/>
+    <Param id="width" value="1.204"/>
+    <Param id="mix" value="0.3423"/>
+  </Preset>
+  <Preset name="Fog Bank" category="Ambient">
+    <Param id="size" value="0.9326"/>
+    <Param id="decay" value="10.13"/>
+    <Param id="damp" value="0.7059"/>
+    <Param id="predelay" value="0.02944"/>
+    <Param id="width" value="1.482"/>
+    <Param id="mix" value="0.511"/>
+  </Preset>
+  <Preset name="Pre-Delay Space" category="Creative">
+    <Param id="size" value="0.691"/>
+    <Param id="decay" value="2.801"/>
+    <Param id="damp" value="0.4903"/>
+    <Param id="predelay" value="0.2481"/>
+    <Param id="width" value="1.277"/>
+    <Param id="mix" value="0.293"/>
+  </Preset>
+  <Preset name="Mono Spring-ish" category="Creative">
+    <Param id="size" value="0.3433"/>
+    <Param id="decay" value="2.422"/>
+    <Param id="damp" value="0.2045"/>
+    <Param id="predelay" value="0.0"/>
+    <Param id="width" value="0.0"/>
+    <Param id="mix" value="0.3082"/>
+  </Preset>
+  <Preset name="Full Wash" category="Creative">
+    <Param id="size" value="0.9041"/>
+    <Param id="decay" value="5.935"/>
+    <Param id="damp" value="0.4942"/>
+    <Param id="predelay" value="0.01969"/>
+    <Param id="width" value="1.36"/>
+    <Param id="mix" value="1.0"/>
+  </Preset>
+  <Preset name="Narrow Ambience" category="Creative">
+    <Param id="size" value="0.4895"/>
+    <Param id="decay" value="1.512"/>
+    <Param id="damp" value="0.4927"/>
+    <Param id="predelay" value="0.01537"/>
+    <Param id="width" value="0.3955"/>
+    <Param id="mix" value="0.2468"/>
+  </Preset>
+</FjordFxModulePresets>

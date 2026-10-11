@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxPreset name="Warm Tape" category="Character" fxOrder="drive,crush,eq,comp,chorus,phaser,flanger,delay,reverb,width">
+  <Param id="fx_drive_amount" value="0.2977"/>
+  <Param id="fx_drive_on" value="1"/>
+  <Param id="fx_drive_tone" value="0.5084"/>
+  <Param id="fx_drive_type" value="0"/>
+  <Param id="fx_eq_high" value="-1.999"/>
+  <Param id="fx_eq_low" value="2.05"/>
+  <Param id="fx_eq_on" value="1"/>
+  <Param id="fx_reverb_decay" value="1.802"/>
+  <Param id="fx_reverb_mix" value="0.1481"/>
+  <Param id="fx_reverb_on" value="1"/>
+  <Param id="fx_reverb_size" value="0.4903"/>
+</FjordFxPreset>

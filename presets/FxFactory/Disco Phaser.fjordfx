@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxPreset name="Disco Phaser" category="Modulation" fxOrder="drive,crush,eq,comp,chorus,phaser,flanger,delay,reverb,width">
+  <Param id="fx_phaser_depth" value="0.5996"/>
+  <Param id="fx_phaser_feedback" value="0.3906"/>
+  <Param id="fx_phaser_mix" value="0.4597"/>
+  <Param id="fx_phaser_on" value="1"/>
+  <Param id="fx_phaser_rate" value="0.2964"/>
+  <Param id="fx_reverb_decay" value="2.203"/>
+  <Param id="fx_reverb_mix" value="0.1767"/>
+  <Param id="fx_reverb_on" value="1"/>
+  <Param id="fx_reverb_size" value="0.6011"/>
+</FjordFxPreset>

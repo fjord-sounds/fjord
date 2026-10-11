@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxModulePresets effect="eq">
+  <Preset name="Clean Lows" category="Cleanup">
+    <Param id="lowcut" value="39.06"/>
+  </Preset>
+  <Preset name="Remove Mud" category="Cleanup">
+    <Param id="lowcut" value="58.22"/>
+    <Param id="midfreq" value="301.7"/>
+    <Param id="mid" value="-3.44"/>
+    <Param id="midq" value="0.9972"/>
+  </Preset>
+  <Preset name="Tighten Bass" category="Cleanup">
+    <Param id="lowcut" value="34.56"/>
+    <Param id="lcslope" value="1"/>
+    <Param id="midfreq" value="174.7"/>
+    <Param id="mid" value="-1.952"/>
+    <Param id="midq" value="1.205"/>
+  </Preset>
+  <Preset name="De-Harsh" category="Cleanup">
+    <Param id="mid2freq" value="3492.0"/>
+    <Param id="mid2" value="-3.575"/>
+    <Param id="mid2q" value="1.589"/>
+  </Preset>
+  <Preset name="Make Room For Vocals" category="Cleanup">
+    <Param id="lowcut" value="123.0"/>
+    <Param id="midfreq" value="1816.0"/>
+    <Param id="mid" value="-2.916"/>
+    <Param id="midq" value="0.8094"/>
+    <Param id="mid2freq" value="3250.0"/>
+    <Param id="mid2" value="-1.961"/>
+    <Param id="mid2q" value="0.9947"/>
+  </Preset>
+  <Preset name="Thin Out" category="Cleanup">
+    <Param id="lowcut" value="257.0"/>
+    <Param id="lcslope" value="1"/>
+  </Preset>
+  <Preset name="Air Lift" category="Tone">
+    <Param id="high" value="3.917"/>
+    <Param id="highfreq" value="9118.0"/>
+  </Preset>
+  <Preset name="Silk Top" category="Tone">
+    <Param id="high" value="2.551"/>
+    <Param id="highfreq" value="11710.0"/>
+    <Param id="mid2freq" value="2917.0"/>
+    <Param id="mid2" value="-1.484"/>
+    <Param id="mid2q" value="1.03"/>
+  </Preset>
+  <Preset name="Warm Bottom" category="Tone">
+    <Param id="low" value="2.925"/>
+    <Param id="lowfreq" value="152.5"/>
+    <Param id="high" value="-2.017"/>
+    <Param id="highfreq" value="7897.0"/>
+  </Preset>
+  <Preset name="Presence" category="Tone">
+    <Param id="mid2freq" value="2565.0"/>
+    <Param id="mid2" value="2.971"/>
+    <Param id="mid2q" value="1.025"/>
+  </Preset>
+  <Preset name="Smile Curve" category="Tone">
+    <Param id="low" value="3.949"/>
+    <Param id="lowfreq" value="101.8"/>
+    <Param id="midfreq" value="877.2"/>
+    <Param id="mid" value="-2.492"/>
+    <Param id="midq" value="0.6874"/>
+    <Param id="high" value="3.941"/>
+    <Param id="highfreq" value="8218.0"/>
+  </Preset>
+  <Preset name="Vintage Console" category="Tone">
+    <Param id="lowcut" value="30.02"/>
+    <Param id="low" value="1.471"/>
+    <Param id="lowfreq" value="79.47"/>
+    <Param id="midfreq" value="1225.0"/>
+    <Param id="mid" value="1.529"/>
+    <Param id="midq" value="0.8086"/>
+    <Param id="highcut" value="16020.0"/>
+  </Preset>
+  <Preset name="Boxy Body" category="Tone">
+    <Param id="midfreq" value="513.6"/>
+    <Param id="mid" value="4.099"/>
+    <Param id="midq" value="1.165"/>
+  </Preset>
+  <Preset name="Nasal Honk" category="Character">
+    <Param id="midfreq" value="981.3"/>
+    <Param id="mid" value="7.913"/>
+    <Param id="midq" value="2.504"/>
+    <Param id="lowcut" value="202.9"/>
+  </Preset>
+  <Preset name="Radio" category="Character">
+    <Param id="lowcut" value="514.2"/>
+    <Param id="lcslope" value="1"/>
+    <Param id="highcut" value="3605.0"/>
+    <Param id="hcslope" value="1"/>
+    <Param id="midfreq" value="1480.0"/>
+    <Param id="mid" value="4.08"/>
+    <Param id="midq" value="0.9832"/>
+  </Preset>
+  <Preset name="Telephone" category="Character">
+    <Param id="lowcut" value="689.6"/>
+    <Param id="lcslope" value="1"/>
+    <Param id="highcut" value="2877.0"/>
+    <Param id="hcslope" value="1"/>
+    <Param id="midfreq" value="1406.0"/>
+    <Param id="mid" value="6.123"/>
+    <Param id="midq" value="1.474"/>
+  </Preset>
+  <Preset name="Behind The Wall" category="Character">
+    <Param id="highcut" value="914.1"/>
+    <Param id="hcslope" value="1"/>
+    <Param id="low" value="2.037"/>
+    <Param id="lowfreq" value="116.7"/>
+  </Preset>
+  <Preset name="Muffled Club" category="Character">
+    <Param id="highcut" value="609.0"/>
+    <Param id="hcslope" value="1"/>
+    <Param id="lowcut" value="39.43"/>
+    <Param id="low" value="2.92"/>
+    <Param id="lowfreq" value="89.33"/>
+  </Preset>
+  <Preset name="Old Record" category="Character">
+    <Param id="lowcut" value="147.1"/>
+    <Param id="highcut" value="5985.0"/>
+    <Param id="midfreq" value="2203.0"/>
+    <Param id="mid" value="3.022"/>
+    <Param id="midq" value="0.885"/>
+  </Preset>
+  <Preset name="Resonant Peak" category="Character">
+    <Param id="midfreq" value="1617.0"/>
+    <Param id="mid" value="11.81"/>
+    <Param id="midq" value="8.201"/>
+  </Preset>
+  <Preset name="Notch Sweep Spot" category="Character">
+    <Param id="midfreq" value="1179.0"/>
+    <Param id="mid" value="-17.66"/>
+    <Param id="midq" value="9.823"/>
+  </Preset>
+  <Preset name="Dark Velvet" category="Tone">
+    <Param id="highcut" value="4528.0"/>
+    <Param id="low" value="1.956"/>
+    <Param id="lowfreq" value="199.9"/>
+    <Param id="mid2freq" value="2534.0"/>
+    <Param id="mid2" value="-2.054"/>
+    <Param id="mid2q" value="0.7789"/>
+  </Preset>
+  <Preset name="Bright Pop" category="Tone">
+    <Param id="lowcut" value="49.13"/>
+    <Param id="mid2freq" value="4546.0"/>
+    <Param id="mid2" value="2.499"/>
+    <Param id="mid2q" value="0.8813"/>
+    <Param id="high" value="2.919"/>
+    <Param id="highfreq" value="10180.0"/>
+  </Preset>
+</FjordFxModulePresets>

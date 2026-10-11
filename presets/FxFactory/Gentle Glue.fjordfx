@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxPreset name="Gentle Glue" category="Clean" fxOrder="drive,crush,eq,comp,chorus,phaser,flanger,delay,reverb,width">
+  <Param id="fx_comp_attack" value="0.0295"/>
+  <Param id="fx_comp_makeup" value="3.013"/>
+  <Param id="fx_comp_mix" value="0.5869"/>
+  <Param id="fx_comp_on" value="1"/>
+  <Param id="fx_comp_ratio" value="2.018"/>
+  <Param id="fx_comp_release" value="0.2046"/>
+  <Param id="fx_comp_thresh" value="-22.05"/>
+  <Param id="fx_reverb_mix" value="0.0"/>
+  <Param id="fx_reverb_on" value="1"/>
+</FjordFxPreset>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxPreset name="Dry" category="Clean" fxOrder="drive,crush,eq,comp,chorus,phaser,flanger,delay,reverb,width">
+  <Param id="fx_reverb_mix" value="0.0"/>
+  <Param id="fx_reverb_on" value="1"/>
+</FjordFxPreset>

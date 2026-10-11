@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxPreset name="Dusty Vinyl" category="Lo-Fi" fxOrder="drive,crush,eq,comp,chorus,phaser,flanger,delay,reverb,width">
+  <Param id="fx_chorus_depth" value="0.3943"/>
+  <Param id="fx_chorus_mix" value="0.256"/>
+  <Param id="fx_chorus_on" value="1"/>
+  <Param id="fx_chorus_rate" value="0.5921"/>
+  <Param id="fx_crush_bits" value="11.0"/>
+  <Param id="fx_crush_mix" value="0.4071"/>
+  <Param id="fx_crush_on" value="1"/>
+  <Param id="fx_crush_rate" value="1.975"/>
+  <Param id="fx_eq_high" value="-3.982"/>
+  <Param id="fx_eq_lowcut" value="99.38"/>
+  <Param id="fx_eq_on" value="1"/>
+  <Param id="fx_reverb_decay" value="1.978"/>
+  <Param id="fx_reverb_mix" value="0.2058"/>
+  <Param id="fx_reverb_on" value="1"/>
+  <Param id="fx_reverb_size" value="0.5586"/>
+</FjordFxPreset>

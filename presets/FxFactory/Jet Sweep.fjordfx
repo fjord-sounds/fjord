@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxPreset name="Jet Sweep" category="Modulation" fxOrder="drive,crush,eq,comp,chorus,phaser,flanger,delay,reverb,width">
+  <Param id="fx_flanger_depth" value="0.7868"/>
+  <Param id="fx_flanger_feedback" value="0.7209"/>
+  <Param id="fx_flanger_mix" value="0.4578"/>
+  <Param id="fx_flanger_on" value="1"/>
+  <Param id="fx_flanger_rate" value="0.1003"/>
+  <Param id="fx_reverb_decay" value="2.255"/>
+  <Param id="fx_reverb_mix" value="0.1754"/>
+  <Param id="fx_reverb_on" value="1"/>
+  <Param id="fx_reverb_size" value="0.5839"/>
+</FjordFxPreset>

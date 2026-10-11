@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxPreset name="Polished" category="Clean" fxOrder="drive,crush,eq,comp,chorus,phaser,flanger,delay,reverb,width">
+  <Param id="fx_comp_attack" value="0.01985"/>
+  <Param id="fx_comp_makeup" value="2.037"/>
+  <Param id="fx_comp_on" value="1"/>
+  <Param id="fx_comp_ratio" value="2.57"/>
+  <Param id="fx_comp_release" value="0.1537"/>
+  <Param id="fx_comp_thresh" value="-18.39"/>
+  <Param id="fx_eq_high" value="1.999"/>
+  <Param id="fx_eq_lowcut" value="38.93"/>
+  <Param id="fx_eq_on" value="1"/>
+  <Param id="fx_reverb_mix" value="0.0"/>
+  <Param id="fx_reverb_on" value="1"/>
+</FjordFxPreset>

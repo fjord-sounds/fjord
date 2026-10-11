@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxPreset name="Airy Shimmer" category="Space" fxOrder="drive,crush,eq,comp,chorus,phaser,flanger,delay,reverb,width">
+  <Param id="fx_eq_high" value="3.937"/>
+  <Param id="fx_eq_on" value="1"/>
+  <Param id="fx_reverb_damp" value="0.1963"/>
+  <Param id="fx_reverb_decay" value="5.102"/>
+  <Param id="fx_reverb_mix" value="0.384"/>
+  <Param id="fx_reverb_on" value="1"/>
+  <Param id="fx_reverb_size" value="0.9124"/>
+  <Param id="fx_reverb_width" value="1.359"/>
+</FjordFxPreset>

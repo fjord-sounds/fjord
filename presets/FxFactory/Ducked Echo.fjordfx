@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxPreset name="Ducked Echo" category="Echo" fxOrder="drive,crush,eq,comp,chorus,phaser,flanger,delay,reverb,width">
+  <Param id="fx_delay_damp" value="0.5119"/>
+  <Param id="fx_delay_div" value="7"/>
+  <Param id="fx_delay_duck" value="0.8209"/>
+  <Param id="fx_delay_feedback" value="0.4921"/>
+  <Param id="fx_delay_mix" value="0.359"/>
+  <Param id="fx_delay_on" value="1"/>
+  <Param id="fx_reverb_mix" value="0.0"/>
+  <Param id="fx_reverb_on" value="1"/>
+</FjordFxPreset>

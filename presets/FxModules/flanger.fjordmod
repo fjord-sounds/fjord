@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FjordFxModulePresets effect="flanger">
+  <Preset name="Gentle Flange" category="Subtle">
+    <Param id="rate" value="0.1516"/>
+    <Param id="depth" value="0.3967"/>
+    <Param id="feedback" value="0.3009"/>
+    <Param id="mix" value="0.3449"/>
+  </Preset>
+  <Preset name="Shimmer Flange" category="Subtle">
+    <Param id="rate" value="0.4015"/>
+    <Param id="depth" value="0.305"/>
+    <Param id="feedback" value="0.2001"/>
+    <Param id="mix" value="0.2512"/>
+  </Preset>
+  <Preset name="Slow Comb" category="Subtle">
+    <Param id="rate" value="0.07874"/>
+    <Param id="depth" value="0.4928"/>
+    <Param id="feedback" value="0.4009"/>
+    <Param id="mix" value="0.293"/>
+  </Preset>
+  <Preset name="Tape Flange" category="Subtle">
+    <Param id="rate" value="0.1003"/>
+    <Param id="depth" value="0.6089"/>
+    <Param id="feedback" value="0.1017"/>
+    <Param id="mix" value="0.4909"/>
+  </Preset>
+  <Preset name="Background Sweep" category="Subtle">
+    <Param id="rate" value="0.04946"/>
+    <Param id="depth" value="0.4935"/>
+    <Param id="feedback" value="0.3484"/>
+    <Param id="mix" value="0.2542"/>
+  </Preset>
+  <Preset name="Classic Jet" category="Classic">
+    <Param id="rate" value="0.1996"/>
+    <Param id="depth" value="0.8169"/>
+    <Param id="feedback" value="0.6934"/>
+    <Param id="mix" value="0.489"/>
+  </Preset>
+  <Preset name="Takeoff" category="Classic">
+    <Param id="rate" value="0.1213"/>
+    <Param id="depth" value="1.0"/>
+    <Param id="feedback" value="0.7927"/>
+    <Param id="mix" value="0.539"/>
+  </Preset>
+  <Preset name="Disco Swoosh" category="Classic">
+    <Param id="rate" value="0.2545"/>
+    <Param id="depth" value="0.6809"/>
+    <Param id="feedback" value="0.6123"/>
+    <Param id="mix" value="0.5038"/>
+  </Preset>
+  <Preset name="Seventies Flanger" category="Classic">
+    <Param id="rate" value="0.3036"/>
+    <Param id="depth" value="0.6023"/>
+    <Param id="feedback" value="0.508"/>
+    <Param id="mix" value="0.505"/>
+  </Preset>
+  <Preset name="Psych" category="Classic">
+    <Param id="rate" value="0.5146"/>
+    <Param id="depth" value="0.9032"/>
+    <Param id="feedback" value="0.7652"/>
+    <Param id="mix" value="0.5341"/>
+  </Preset>
+  <Preset name="Through Zero" category="Classic">
+    <Param id="rate" value="0.1822"/>
+    <Param id="depth" value="0.9858"/>
+    <Param id="feedback" value="0.3905"/>
+    <Param id="mix" value="0.5956"/>
+  </Preset>
+  <Preset name="Metallic Ring" category="Intense">
+    <Param id="rate" value="0.07157"/>
+    <Param id="depth" value="0.4933"/>
+    <Param id="feedback" value="0.941"/>
+    <Param id="mix" value="0.4374"/>
+  </Preset>
+  <Preset name="Robot Throat" category="Intense">
+    <Param id="rate" value="1.982"/>
+    <Param id="depth" value="0.3953"/>
+    <Param id="feedback" value="0.9058"/>
+    <Param id="mix" value="0.5113"/>
+  </Preset>
+  <Preset name="Chorus Flange" category="Intense">
+    <Param id="rate" value="1.187"/>
+    <Param id="depth" value="0.5018"/>
+    <Param id="feedback" value="0.3065"/>
+    <Param id="mix" value="0.4933"/>
+  </Preset>
+  <Preset name="Whoosh Riser" category="Intense">
+    <Param id="rate" value="0.03896"/>
+    <Param id="depth" value="1.0"/>
+    <Param id="feedback" value="0.8531"/>
+    <Param id="mix" value="0.6118"/>
+  </Preset>
+  <Preset name="Vibrato Flange" category="Intense">
+    <Param id="rate" value="4.109"/>
+    <Param id="depth" value="0.2983"/>
+    <Param id="feedback" value="0.1997"/>
+    <Param id="mix" value="0.7977"/>
+  </Preset>
+  <Preset name="Hollow Tube" category="Intense">
+    <Param id="rate" value="0.2043"/>
+    <Param id="depth" value="0.1976"/>
+    <Param id="feedback" value="0.9635"/>
+    <Param id="mix" value="0.4995"/>
+  </Preset>
+  <Preset name="Space Wind" category="Intense">
+    <Param id="rate" value="0.03084"/>
+    <Param id="depth" value="0.8982"/>
+    <Param id="feedback" value="0.6061"/>
+    <Param id="mix" value="0.3922"/>
+  </Preset>
+  <Preset name="Full Jet" category="Classic">
+    <Param id="rate" value="0.1522"/>
+    <Param id="depth" value="0.9855"/>
+    <Param id="feedback" value="0.859"/>
+    <Param id="mix" value="0.9936"/>
+  </Preset>
+  <Preset name="Wide Shimmer" category="Subtle">
+    <Param id="rate" value="0.602"/>
+    <Param id="depth" value="0.2013"/>
+    <Param id="feedback" value="0.2515"/>
+    <Param id="mix" value="0.3034"/>
+  </Preset>
+  <Preset name="Soft Comb Filter" category="Subtle">
+    <Param id="rate" value="0.02"/>
+    <Param id="depth" value="0.3056"/>
+    <Param id="feedback" value="0.6025"/>
+    <Param id="mix" value="0.3034"/>
+  </Preset>
+</FjordFxModulePresets>
