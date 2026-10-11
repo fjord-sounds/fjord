@@ -50,7 +50,7 @@ jobs:
           cp -R "${{ matrix.artefacts }}"/Standalone dist/ 2>/dev/null || true
           cd dist && 7z a -tzip "../Fjord-${GITHUB_REF_NAME}-${{ matrix.name }}.zip" . > /dev/null
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: Fjord-${{ matrix.name }}
           path: Fjord-*.zip
