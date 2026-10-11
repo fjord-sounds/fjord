@@ -36,25 +36,24 @@ Every sound is synthesized in real time – there are no samples.
 ## Listen
 
 Short sketches in A minor (112 BPM), played with factory presets exactly as they ship – no extra processing
-besides loudness matching. Click a title to play it in the browser.
+besides loudness matching. All examples are in the folder **[docs/audio](docs/audio)** (open a file and press play):
 
-| | Preset | What you hear |
+| File | Preset | What you hear |
 |---|---|---|
-| ▶ | [**Velvet Galaxy**](docs/audio/pad.mp3?raw=true) · Pad | slow chords, wide and soft |
-| ▶ | [**Cassette Rhodes**](docs/audio/keys.mp3?raw=true) · Keys | chord stabs with tape wobble |
-| ▶ | [**Disco Octave**](docs/audio/bass.mp3?raw=true) · Bass | octave bassline in eighth notes |
-| ▶ | [**Disco Lead**](docs/audio/lead.mp3?raw=true) · Lead | the melody |
-| ▶ | [**Crystal Pluck**](docs/audio/pluck.mp3?raw=true) · Pluck | broken chords |
-| ▶ | [**Disco Arp**](docs/audio/arp.mp3?raw=true) · Arp | held chords, the arpeggiator plays |
-| ▶ | [**Polaroid Afternoon**](docs/audio/arp-polaroid.mp3?raw=true) · Arp | bedroom-pop music box with an accented step pattern |
-| ▶ | [**Small Hours Arp**](docs/audio/arp-small-hours.mp3?raw=true) · Arp | slow mono arp, tied steps glide into each other |
-| ▶ | [**French House Chords**](docs/audio/gated.mp3?raw=true) · Gated | held chords through the step gate and pump |
-| ▶ | [**Aurora Haze**](docs/audio/atmos.mp3?raw=true) · Atmos | two-bar chords, lots of space |
-| ▶ | [**Disco Kick + Clap + Closed Hat**](docs/audio/drums.mp3?raw=true) · Drums | a groove from three drum presets |
-| ▶ | [**Song sketch**](docs/audio/sketch.mp3?raw=true) · Mix | pad, bass, lead and drums together |
+| `pad.mp3` | **Velvet Galaxy** · Pad | slow chords, wide and soft |
+| `keys.mp3` | **Cassette Rhodes** · Keys | chord stabs with tape wobble |
+| `bass.mp3` | **Disco Octave** · Bass | octave bassline in eighth notes |
+| `lead.mp3` | **Disco Lead** · Lead | the melody |
+| `pluck.mp3` | **Crystal Pluck** · Pluck | broken chords |
+| `arp.mp3` | **Disco Arp** · Arp | held chords, the arpeggiator plays |
+| `arp-polaroid.mp3` | **Polaroid Afternoon** · Arp | bedroom-pop music box with an accented step pattern |
+| `arp-small-hours.mp3` | **Small Hours Arp** · Arp | slow mono arp, tied steps glide into each other |
+| `gated.mp3` | **French House Chords** · Gated | held chords through the step gate and pump |
+| `atmos.mp3` | **Aurora Haze** · Atmos | two-bar chords, lots of space |
+| `drums.mp3` | **Disco Kick + Clap + Closed Hat** · Drums | a groove from three drum presets |
+| `sketch.mp3` | **Song sketch** · Mix | pad, bass, lead and drums together |
 
-The examples are rendered by the plugin itself (see [Audio examples](#audio-examples)); every one also exists as a
-small video with a waveform for inline players on GitHub (generated locally into `docs/audio/video/`, not stored in the repository).
+The examples are rendered by the plugin itself (see [Audio examples](#audio-examples)).
 
 ## Works in your DAW
 
@@ -320,14 +319,13 @@ The examples in [Listen](#listen) are made by a script, so they can be renewed w
 
 ```bash
 cmake --build build --target FjordRenderTest
-python3 tools/demos/make_demos.py          # all examples -> docs/audio/*.mp3 and docs/audio/video/*.mp4
+python3 tools/demos/make_demos.py          # all examples -> docs/audio/*.mp3
 python3 tools/demos/make_demos.py bass     # only one
 ```
 
 The melodies are written in `tools/demos/make_demos.py`. `FjordRenderTest --demo <preset> <score.txt> <out.wav>`
 plays a score (beats, MIDI notes, velocities) with a running host transport, ffmpeg mixes the layers and matches
-the loudness. GitHub only plays media that was uploaded through its editor, so for inline players drag the files
-from `docs/audio/video/` into the README on github.com; the links above work everywhere.
+the loudness.
 
 ## Screenshots
 
