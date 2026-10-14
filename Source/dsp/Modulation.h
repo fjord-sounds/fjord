@@ -82,7 +82,8 @@ namespace fjord::dsp
         Osc1WtPos, Osc2WtPos, Osc3WtPos, Osc1Pw, Osc2Pw, Osc3Pw, Detune, Spread, SubLevel, NoiseLevel,
         Cutoff1, Reso1, Drive1, Cutoff2, Reso2, FilterEnvAmount, Volume, Pan,
         Lfo1Rate, Lfo2Rate, Lfo3Rate, EnvAttack, EnvRelease,
-        // Global effect destinations (only global sources apply: macros, free-running LFOs, mod wheel, aftertouch, bend)
+        // Global effect destinations (only global sources apply: macros, free-running LFOs, mod wheel, aftertouch, bend).
+        // They act on the shared effects of fjord-base: Drive = Saturation, Chorus / Phaser / Flanger = Motion, Crush = Lo-Fi.
         FxDrive, ChorusMix, PhaserMix, FlangerMix, DelayMix, DelayFeedback, ReverbMix, ReverbSize, CrushMix, StereoWidth,
         // Oscillator 4 was added later; its destinations are appended so stored presets keep their indices
         Osc4Pitch, Osc4Level, Osc4WtPos, Osc4Pw,
@@ -123,8 +124,8 @@ namespace fjord::dsp
                                            "Sub Level", "Noise Level", "Cutoff 1", "Reso 1", "Drive 1",
                                            "Cutoff 2", "Reso 2", "Filter Env Amt", "Volume", "Pan",
                                            "LFO 1 Rate", "LFO 2 Rate", "LFO 3 Rate", "Env Attack", "Env Release",
-                                           "FX Drive", "Chorus Mix", "Phaser Mix", "Flanger Mix", "Delay Mix", "Delay Feedback",
-                                           "Reverb Mix", "Reverb Size", "Crush Mix", "Stereo Width",
+                                           "Saturation Drive", "Motion Mix", "Motion Mix (alt)", "Motion Mix (alt 2)", "Delay Mix", "Delay Feedback",
+                                           "Reverb Mix", "Reverb Size", "Lo-Fi Mix", "Stereo Width",
                                            "Osc 4 Pitch", "Osc 4 Level", "Osc 4 WT Pos", "Osc 4 Width",
                                            "Osc 5 Pitch", "Osc 5 Level", "Osc 5 WT Pos", "Osc 5 Width",
                                            "Osc 6 Pitch", "Osc 6 Level", "Osc 6 WT Pos", "Osc 6 Width",

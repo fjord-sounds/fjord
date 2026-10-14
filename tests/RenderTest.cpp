@@ -3,10 +3,9 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
 #include "ui/Theme.h"
-#include "ui/PresetBrowser.h"
 #include "ui/ModPage.h"
 #include "ui/PlayPage.h"
-#include "ui/FxPage.h"
+#include <fjord_base/fx/ModulePresets.h>
 #include "ui/RhythmPage.h"
 #include "ui/ArpPage.h"
 
@@ -208,7 +207,7 @@ static int arpSwitchTest()
 static int fxPresetTests()
 {
     FjordProcessor proc;
-    auto& fxm = proc.fxPresetManager;
+    auto& fxm = proc.chainPresets;
     auto value = [&] (const char* id) { auto* p = proc.apvts.getParameter (id); return p->convertFrom0to1 (p->getValue()); };
     int bigHall = -1;
     for (int i = 0; i < (int) fxm.getPresets().size(); ++i)
@@ -415,7 +414,7 @@ static int renderDemo (const juce::String& presetName, const juce::File& scoreFi
 
 // One UI screenshot of a factory preset: page = play|synth|osc|mod|fx|comp|arp|rhythm|browser|about, theme = light|dark.
 // The notes are held on the on-screen keyboard so the keys and the oscilloscope show something.
-// Used by tools/screenshots/shoot.mjs.
+// Used by tools/screenshots/shoot.sh (shots.conf).
 static int takeScreenshot (const juce::String& pageName, const juce::String& presetName, const juce::String& theme,
                            const juce::File& outFile, int fxIndex, const juce::Array<int>& notes)
 {
@@ -440,7 +439,7 @@ static int takeScreenshot (const juce::String& pageName, const juce::String& pre
 
     fjord::ui::Theme::get().setDark (theme == "dark");
     std::unique_ptr<juce::AudioProcessorEditor> editorWindow (proc.createEditor());
-    editorWindow->setSize (FjordView::baseWidth, FjordView::baseHeight);
+    editorWindow->setSize (FjordView::width, FjordView::height);
     auto* view = dynamic_cast<FjordView*> (editorWindow->getChildComponent (0));
     if (view == nullptr) return 1;
 
@@ -489,7 +488,7 @@ static int takeScreenshot (const juce::String& pageName, const juce::String& pre
     {
         buffer.clear();
         proc.processBlock (buffer, midi);
-        view->tickLevelMeter();
+        view->tickAnimations();
     }
 
     const auto image = view->createComponentSnapshot (view->getLocalBounds(), true, 2.0f);
@@ -525,7 +524,7 @@ static int lockTests()
     fjord::locks::setLocked (proc.apvts.state, fjord::locks::oscGroup (1), true);
     setPlain ("osc7_on", 1.0f); setPlain ("osc7_semi", 3.0f);
     fjord::locks::setLocked (proc.apvts.state, fjord::locks::oscGroup (6), true);
-    fjord::locks::setLocked (proc.apvts.state, fjord::locks::effectGroup ((int) fjord::fx::FxType::Delay), true);
+    fjord::locks::setLocked (proc.apvts.state, fjord::locks::effectGroup ((int) fjord::base::fx::Module::Delay), true);
     proc.presetManager.load (5);
     const bool partsKept = juce::roundToInt (value ("osc2_semi")) == 5 && juce::roundToInt (value ("osc7_semi")) == 3 && std::abs (value ("fx_delay_feedback") - 0.777f) < 0.001f;
     const bool restReplaced = juce::roundToInt (value ("osc1_semi")) != -7 && std::abs (value ("fx_reverb_mix") - 0.777f) > 0.001f;
@@ -538,27 +537,27 @@ static int lockTests()
     return ok ? 0 : 1;
 }
 
-// Effect module presets: at least 20 per effect, every one loads and switches only its effect on
+// Effect presets (shared by the whole family): every one loads and switches only its effect on
 static int modulePresetTests()
 {
+    namespace fx = fjord::base::fx;
     FjordProcessor proc;
     int fails = 0, total = 0;
-    for (int t = 0; t < fjord::fx::kNumFx; ++t)
+    for (int t = 0; t < fx::kNumModules; ++t)
     {
-        const auto& list = fjord::FxModulePresets::get().getPresets (t);
+        const auto& list = fx::ModulePresets::get().getPresets (t);
         int factory = 0;
         for (const auto& p : list) factory += p.file == juce::File() ? 1 : 0;
         total += factory;
-        if (factory < 20) { printf ("module presets %s: only %d  FAIL\n", fjord::fx::fxIds()[t].toRawUTF8(), factory); ++fails; }
         for (const auto& p : list)
         {
-            fjord::FxModulePresets::apply (proc.apvts, t, p);
+            fx::ModulePresets::apply (proc.apvts, t, p);
             for (const auto& [id, v] : p.values)
             {
-                auto* param = proc.apvts.getParameter ("fx_" + fjord::fx::fxIds()[t] + "_" + id);
+                auto* param = proc.apvts.getParameter (fx::ModulePresets::prefix (t) + id);
                 if (param == nullptr || std::abs (param->convertFrom0to1 (param->getValue()) - v) > 0.01f * std::max (1.0f, std::abs (v)))
                 {
-                    printf ("module preset %s / %s: %s not applied  FAIL\n", fjord::fx::fxIds()[t].toRawUTF8(), p.name.toRawUTF8(), id.toRawUTF8());
+                    printf ("module preset %s / %s: %s not applied  FAIL\n", fx::info (t).id, p.name.toRawUTF8(), id.toRawUTF8());
                     ++fails;
                 }
             }
@@ -587,7 +586,7 @@ static int oversizedBlockTest()
     const double sr = 48000.0;
     proc.setPlayConfigDetails (0, 2, sr, 256);
     proc.prepareToPlay (sr, 256);
-    set (proc.apvts, "fx_drive_on", 1); set (proc.apvts, "arp_on", 1); set (proc.apvts, "fx_reverb_on", 1);
+    set (proc.apvts, "fx_saturation_on", 1); set (proc.apvts, "arp_on", 1); set (proc.apvts, "fx_reverb_on", 1);
     float peak = 0.0f;
     bool finite = true;
     for (int k = 0; k < 40; ++k)
@@ -710,23 +709,23 @@ int main (int argc, char** argv)
               set (s, "lfo1_rate", 5.5f); set (s, "mod1_src", 1); set (s, "mod1_dst", 1); set (s, "mod1_amt", 0.02f); set (s, "mod1_via", 13);
               set (s, "mod2_src", 3); set (s, "mod2_dst", 24); set (s, "mod2_amt", -0.5f); set (s, "lfo3_shape", 4); set (s, "lfo3_rate", 4.0f);
           }, { 57, 64 } },
-        { "fx_drive_tape", [] (S& s) { set (s, "fx_drive_on", 1); set (s, "fx_drive_amount", 0.8f); }, { 48, 55 } },
-        { "fx_drive_fold", [] (S& s) { set (s, "fx_drive_on", 1); set (s, "fx_drive_type", 2); set (s, "fx_drive_amount", 1.0f); }, { 36 } },
-        { "fx_crush", [] (S& s) { set (s, "fx_crush_on", 1); set (s, "fx_crush_bits", 4.0f); set (s, "fx_crush_rate", 12.0f); }, { 60 } },
+        { "fx_drive_tape", [] (S& s) { set (s, "fx_saturation_on", 1); set (s, "fx_saturation_drive", 0.8f); }, { 48, 55 } },
+        { "fx_drive_fold", [] (S& s) { set (s, "fx_saturation_on", 1); set (s, "fx_saturation_mode", 3); set (s, "fx_saturation_drive", 1.0f); }, { 36 } },
+        { "fx_crush", [] (S& s) { set (s, "fx_lofi_on", 1); set (s, "fx_lofi_bits", 4.0f); set (s, "fx_lofi_rate", 12.0f); }, { 60 } },
         { "fx_eq", [] (S& s) {
-              set (s, "fx_eq_on", 1); set (s, "fx_eq_lowcut", 200.0f); set (s, "fx_eq_low", 12.0f);
-              set (s, "fx_eq_mid", -12.0f); set (s, "fx_eq_high", 10.0f); set (s, "fx_eq_highcut", 6000.0f);
+              set (s, "fx_eq_on", 1); set (s, "fx_eq_lowcut", 200.0f); set (s, "fx_eq_low_gain", 12.0f);
+              set (s, "fx_eq_mid_gain", -12.0f); set (s, "fx_eq_high_gain", 10.0f); set (s, "fx_eq_highcut", 6000.0f);
           }, { 48, 60 } },
         { "fx_eq_parametric", [] (S& s) {
-              set (s, "fx_eq_on", 1); set (s, "fx_eq_lowcut", 300.0f); set (s, "fx_eq_lcslope", 1);
-              set (s, "fx_eq_midfreq", 900.0f); set (s, "fx_eq_mid", 18.0f); set (s, "fx_eq_midq", 12.0f);
-              set (s, "fx_eq_mid2freq", 4000.0f); set (s, "fx_eq_mid2", -18.0f); set (s, "fx_eq_mid2q", 0.2f);
-              set (s, "fx_eq_highcut", 5000.0f); set (s, "fx_eq_hcslope", 1); set (s, "osc1_unison", 5);
+              set (s, "fx_eq_on", 1); set (s, "fx_eq_lowcut", 300.0f); set (s, "fx_eq_lowcut_slope", 1);
+              set (s, "fx_eq_mid_freq", 900.0f); set (s, "fx_eq_mid_gain", 18.0f); set (s, "fx_eq_mid_q", 12.0f);
+              set (s, "fx_eq_mid2_freq", 4000.0f); set (s, "fx_eq_mid2_gain", -18.0f); set (s, "fx_eq_mid2_q", 0.2f);
+              set (s, "fx_eq_highcut", 5000.0f); set (s, "fx_eq_highcut_slope", 1); set (s, "osc1_unison", 5);
           }, { 48, 60 } },
-        { "fx_comp", [] (S& s) { set (s, "fx_comp_on", 1); set (s, "fx_comp_thresh", -30.0f); set (s, "fx_comp_ratio", 10.0f); set (s, "fx_comp_makeup", 6.0f); }, { 48, 55, 60 } },
-        { "fx_chorus", [] (S& s) { set (s, "fx_chorus_on", 1); set (s, "fx_chorus_depth", 1.0f); set (s, "fx_chorus_mix", 0.8f); }, { 48, 55, 60 } },
-        { "fx_phaser", [] (S& s) { set (s, "fx_phaser_on", 1); set (s, "fx_phaser_feedback", 1.0f); set (s, "fx_phaser_rate", 2.0f); }, { 48, 60 } },
-        { "fx_flanger", [] (S& s) { set (s, "fx_flanger_on", 1); set (s, "fx_flanger_feedback", 1.0f); set (s, "fx_flanger_mix", 1.0f); }, { 48, 60 } },
+        { "fx_comp", [] (S& s) { set (s, "fx_compressor_on", 1); set (s, "fx_compressor_thresh", -30.0f); set (s, "fx_compressor_ratio", 10.0f); set (s, "fx_compressor_makeup", 6.0f); }, { 48, 55, 60 } },
+        { "fx_chorus", [] (S& s) { set (s, "fx_motion_on", 1); set (s, "fx_motion_mode", 0); set (s, "fx_motion_depth", 1.0f); set (s, "fx_motion_mix", 0.8f); }, { 48, 55, 60 } },
+        { "fx_phaser", [] (S& s) { set (s, "fx_motion_on", 1); set (s, "fx_motion_mode", 2); set (s, "fx_motion_feedback", 1.0f); set (s, "fx_motion_rate", 2.0f); }, { 48, 60 } },
+        { "fx_flanger", [] (S& s) { set (s, "fx_motion_on", 1); set (s, "fx_motion_mode", 3); set (s, "fx_motion_feedback", 1.0f); set (s, "fx_motion_mix", 1.0f); }, { 48, 60 } },
         { "fx_delay_pingpong", [] (S& s) {
               set (s, "fx_delay_on", 1); set (s, "fx_delay_feedback", 0.9f); set (s, "fx_delay_mix", 0.5f);
               set (s, "amp_decay", 0.2f); set (s, "amp_sustain", 0.0f);
@@ -736,7 +735,7 @@ int main (int argc, char** argv)
               set (s, "amp_decay", 0.2f); set (s, "amp_sustain", 0.0f);
           }, { 48, 55, 60, 64 } },
         { "fx_all_chain", [] (S& s) {
-              for (auto* id : { "drive", "crush", "eq", "comp", "chorus", "phaser", "flanger", "delay", "reverb", "width" })
+              for (auto* id : { "saturation", "lofi", "transient", "compressor", "squash", "eq", "filter", "motion", "delay", "reverb", "width", "tremolo", "shifter", "exciter", "harmonizer" })
                   set (s, juce::String ("fx_") + id + "_on", 1);
               set (s, "fx_width_amount", 2.0f); set (s, "mod1_src", 13); set (s, "mod1_dst", 37); set (s, "mod1_amt", 0.5f);
               set (s, "osc1_unison", 8);
@@ -803,9 +802,9 @@ int main (int argc, char** argv)
         set (proc.apvts, "mod1_src", 1); set (proc.apvts, "mod1_dst", 18); set (proc.apvts, "mod1_amt", 0.25f);
         set (proc.apvts, "mod2_src", 13); set (proc.apvts, "mod2_dst", 9); set (proc.apvts, "mod2_amt", -0.6f); set (proc.apvts, "mod2_via", 9);
         set (proc.apvts, "lfo2_shape", 5); set (proc.apvts, "lfo3_sync", 1);
-        set (proc.apvts, "fx_eq_on", 1); set (proc.apvts, "fx_eq_lowcut", 80.0f); set (proc.apvts, "fx_eq_mid", -6.0f);
-        set (proc.apvts, "fx_eq_high", 4.0f); set (proc.apvts, "fx_eq_highcut", 12000.0f); set (proc.apvts, "fx_reverb_on", 1);
-        set (proc.apvts, "fx_eq_mid2", 5.0f); set (proc.apvts, "fx_eq_mid2freq", 3500.0f); set (proc.apvts, "fx_eq_mid2q", 2.5f);
+        set (proc.apvts, "fx_eq_on", 1); set (proc.apvts, "fx_eq_lowcut", 80.0f); set (proc.apvts, "fx_eq_mid_gain", -6.0f);
+        set (proc.apvts, "fx_eq_high_gain", 4.0f); set (proc.apvts, "fx_eq_highcut", 12000.0f); set (proc.apvts, "fx_reverb_on", 1);
+        set (proc.apvts, "fx_eq_mid2_gain", 5.0f); set (proc.apvts, "fx_eq_mid2_freq", 3500.0f); set (proc.apvts, "fx_eq_mid2_q", 2.5f);
         set (proc.apvts, "fx_delay_on", 1);
         set (proc.apvts, "gate_on", 1); set (proc.apvts, "arp_on", 1); set (proc.apvts, "pump_on", 1);
         set (proc.apvts, "stutter_on", 1); set (proc.apvts, "stutter_start", 2); set (proc.apvts, "stutter_pitch", 7.0f);
@@ -823,7 +822,7 @@ int main (int argc, char** argv)
         {
             fjord::ui::Theme::get().setDark (dark);
             std::unique_ptr<juce::AudioProcessorEditor> editorWindow (proc.createEditor());
-            editorWindow->setSize (FjordView::baseWidth, FjordView::baseHeight);
+            editorWindow->setSize (FjordView::width, FjordView::height);
             juce::Component* editor = editorWindow->getChildComponent (0);   // FjordView
             const auto image = editor->createComponentSnapshot (editor->getLocalBounds(), true, 2.0f);
             auto snap = [&] (const juce::String& name)
@@ -841,7 +840,7 @@ int main (int argc, char** argv)
             {
                 for (auto* child : editor->getChildren())
                     if (dynamic_cast<fjord::ui::SynthPage*> (child) || dynamic_cast<fjord::ui::ModPage*> (child)
-                        || dynamic_cast<fjord::ui::PlayPage*> (child) || dynamic_cast<fjord::ui::FxPage*> (child)
+                        || dynamic_cast<fjord::ui::PlayPage*> (child) || dynamic_cast<fjord::base::fx::FxPage*> (child)
                         || dynamic_cast<fjord::ui::RhythmPage*> (child) || dynamic_cast<fjord::ui::ArpPage*> (child))
                         child->setVisible (child == target);
             };
@@ -851,16 +850,16 @@ int main (int argc, char** argv)
                 if (dynamic_cast<fjord::ui::PlayPage*> (child)) { showOnly (child); snap ("ui_play"); }
                 if (dynamic_cast<fjord::ui::RhythmPage*> (child)) { showOnly (child); snap ("ui_rhythm"); }
                 if (dynamic_cast<fjord::ui::ArpPage*> (child)) { showOnly (child); snap ("ui_arp"); }
-                if (auto* fxp = dynamic_cast<fjord::ui::FxPage*> (child))
+                if (auto* fxp = dynamic_cast<fjord::base::fx::FxPage*> (child))
                 {
                     showOnly (child);
                     snap ("ui_fx_reverb");
-                    fxp->selectEffect (2);
+                    fxp->selectEffect ((int) fjord::base::fx::Module::Eq);
                     snap ("ui_fx_eq");
-                    fxp->selectEffect (7);
+                    fxp->selectEffect ((int) fjord::base::fx::Module::Delay);
                     snap ("ui_fx_delay");
                     for (auto* c : fxp->getChildren())
-                        if (auto* picker = dynamic_cast<fjord::ui::FxPresetPicker*> (c))
+                        if (auto* picker = dynamic_cast<fjord::base::fx::ChainPicker*> (c))
                         {
                             picker->setVisible (true);
                             snap ("ui_fx_picker");

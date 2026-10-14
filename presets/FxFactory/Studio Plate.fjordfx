@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<FjordFxPreset name="Studio Plate" category="Space" fxOrder="drive,crush,eq,comp,chorus,phaser,flanger,delay,reverb,width">
-  <Param id="fx_reverb_damp" value="0.4045"/>
-  <Param id="fx_reverb_decay" value="1.837"/>
-  <Param id="fx_reverb_mix" value="0.2152"/>
-  <Param id="fx_reverb_on" value="1"/>
-  <Param id="fx_reverb_predelay" value="0.01941"/>
-  <Param id="fx_reverb_size" value="0.5006"/>
-</FjordFxPreset>

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<FjordFxPreset name="Warm Hall" category="Space" fxOrder="drive,crush,eq,comp,chorus,phaser,flanger,delay,reverb,width">
-  <Param id="fx_reverb_damp" value="0.6341"/>
-  <Param id="fx_reverb_decay" value="3.56"/>
-  <Param id="fx_reverb_mix" value="0.296"/>
-  <Param id="fx_reverb_on" value="1"/>
-  <Param id="fx_reverb_predelay" value="0.03068"/>
-  <Param id="fx_reverb_size" value="0.8178"/>
-</FjordFxPreset>

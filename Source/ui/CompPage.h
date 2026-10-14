@@ -1,7 +1,7 @@
 #pragma once
 #include "Controls.h"
 #include "../Parameters.h"
-#include "../fx/Effects.h"
+#include <fjord_base/fx/Effects.h>
 
 namespace fjord::ui
 {
@@ -9,8 +9,13 @@ namespace fjord::ui
     // meters and one-click characters. All of it drives the compressor of the effect chain.
     namespace comp
     {
-        constexpr int kType = (int) fx::FxType::Comp;
-        inline juce::String id (const char* name) { return params::fx (kType, name); }
+        // The compressor of the shared effect chain (fjord-base); attack and release are in milliseconds
+        constexpr int kType = (int) fjord::base::fx::Module::Compressor;
+        inline juce::String id (const char* name)
+        {
+            const juce::String n (name);
+            return "fx_compressor_" + (n == "schpf" ? juce::String ("hpf") : n);
+        }
 
         // Sets a parameter (plain value) as one complete host gesture.
         inline void setPlain (APVTS& s, const juce::String& paramId, float value)
@@ -40,12 +45,12 @@ namespace fjord::ui
             float kneeDb() const     { return knee->load(); }
             float makeupDb() const
             {
-                return makeup->load() + (autoGain->load() > 0.5f ? fx::Comp::autoMakeup (threshold(), ratioValue()) : 0.0f);
+                return makeup->load() + (autoGain->load() > 0.5f ? fjord::base::fx::Compressor::autoMakeup (threshold(), ratioValue()) : 0.0f);
             }
             // static output level for an input level (dB), including makeup and the parallel mix
             float output (float inDb) const
             {
-                const float wet = inDb - fx::Comp::reduction (inDb, threshold(), ratioValue(), kneeDb()) + makeupDb();
+                const float wet = inDb - fjord::base::fx::Compressor::reduction (inDb, threshold(), ratioValue(), kneeDb()) + makeupDb();
                 const float m = mix->load();
                 return toDb ((1.0f - m) * juce::Decibels::decibelsToGain (inDb) + m * juce::Decibels::decibelsToGain (wet));
             }
@@ -504,12 +509,12 @@ namespace fjord::ui
         };
 
         static inline const Style styles[] = {
-            { "Gentle",   "Evens out the level, barely there",     -16.0f,  1.8f, 18.0f, 0.020f, 0.30f, 0.0f, 1.00f,  20.0f, true },
-            { "Glue",     "Bus style, binds layers together",      -20.0f,  2.5f, 10.0f, 0.012f, 0.18f, 0.0f, 1.00f,  60.0f, true },
-            { "Punch",    "Slow attack lets transients through",   -22.0f,  4.0f,  4.0f, 0.035f, 0.12f, 0.0f, 1.00f,  20.0f, true },
-            { "Squash",   "Flat and dense like an old radio",      -34.0f, 12.0f,  2.0f, 0.001f, 0.07f, 0.0f, 1.00f,  20.0f, true },
-            { "Parallel", "Dense copy under the dry sound"     , -38.0f, 10.0f,  4.0f, 0.002f, 0.10f, 9.0f, 0.45f,  20.0f, false },
-            { "Breathe",  "Long release, the sound swells back",   -30.0f,  6.0f,  6.0f, 0.004f, 0.45f, 0.0f, 1.00f, 120.0f, true },
+            { "Gentle",   "Evens out the level, barely there",     -16.0f,  1.8f, 18.0f, 20.0f, 300.0f, 0.0f, 1.00f,  20.0f, true },
+            { "Glue",     "Bus style, binds layers together",      -20.0f,  2.5f, 10.0f, 12.0f, 180.0f, 0.0f, 1.00f,  60.0f, true },
+            { "Punch",    "Slow attack lets transients through",   -22.0f,  4.0f,  4.0f, 35.0f, 120.0f, 0.0f, 1.00f,  20.0f, true },
+            { "Squash",   "Flat and dense like an old radio",      -34.0f, 12.0f,  2.0f, 1.0f, 70.0f, 0.0f, 1.00f,  20.0f, true },
+            { "Parallel", "Dense copy under the dry sound"     , -38.0f, 10.0f,  4.0f, 2.0f, 100.0f, 9.0f, 0.45f,  20.0f, false },
+            { "Breathe",  "Long release, the sound swells back",   -30.0f,  6.0f,  6.0f, 4.0f, 450.0f, 0.0f, 1.00f, 120.0f, true },
         };
         static constexpr int numStyles = (int) std::size (styles);
 
@@ -597,7 +602,7 @@ namespace fjord::ui
             for (int i = 0; i <= 30; ++i)
             {
                 const float in = -48.0f + 48.0f * (float) i / 30.0f;
-                const float out = in - fx::Comp::reduction (in, st.thresh, st.ratio, st.knee) * st.mix;
+                const float out = in - fjord::base::fx::Compressor::reduction (in, st.thresh, st.ratio, st.knee) * st.mix;
                 const auto pt = juce::Point<float> (r.getX() + r.getWidth() * (float) i / 30.0f,
                                                     r.getBottom() - std::clamp ((out + 48.0f) / 48.0f, 0.0f, 1.0f) * r.getHeight());
                 if (i == 0) path.startNewSubPath (pt); else path.lineTo (pt);

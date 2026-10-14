@@ -19,7 +19,7 @@ Every sound is synthesized in real time – there are no samples.
 
 ## Lightweight
 
-- **Small**: the VST3 is about 12 MB (macOS universal binary, arm64 + x86_64), including 1,800+ factory presets and the font.
+- **Small**: the VST3 is about 18 MB (macOS universal binary, arm64 + x86_64), including 1,800+ factory presets and the font.
 - **Self-contained**: no sample library, no extra files to install, no installer data, no account, no network access.
   Presets and the font are compiled into the plugin.
 - **Calm on the audio thread**: no allocations or locks while rendering sound.
@@ -83,8 +83,8 @@ What makes it host-friendly:
 ## Audio format
 
 - **Output**: stereo (2 channels), 32-bit floating point. No audio input, MIDI input only (no MIDI output).
-- **Processing**: 32-bit float throughout; hosts that offer 64-bit float buffers get converted ones. The drive effect
-  oversamples 2x internally.
+- **Processing**: 32-bit float throughout; hosts that offer 64-bit float buffers get converted ones. The saturation
+  can oversample up to 4x.
 - **Sample rate**: any rate the host uses (tested at 44.1 to 96 kHz). All timing, filters and effects are
   derived from the current rate, so a sound is the same at 44.1 and 96 kHz.
 - **Block size**: any, including blocks larger than announced.
@@ -108,14 +108,18 @@ keep sounding the same:
   state is converted when the project loads (`migrateState()` in `Source/PluginProcessor.cpp`).
 - Your own presets (`.fjord`, `.fjordfx`, `.fjordmod`) are plain files and stay valid.
 
-Maintainers: `python3 tools/release/bump_version.py 0.2.0` sets the version and the changelog; pushing the tag
-`v0.2.0` makes GitHub Actions build and publish the release (`.github/workflows/release.yml`).
+Maintainers: `python3 ../fjord-base/tools/release/bump_version.py 0.2.0` sets the version and the changelog; pushing the tag
+`v0.2.0` makes GitHub Actions build and publish the release (`.github/workflows/release.yml`, a shared workflow from fjord-base).
 
 ## Building
 
-The plugin builds with CMake on all three platforms. JUCE 8 is not part of the repository: CMake downloads the pinned
-release on the first configure (or uses a local checkout via `-DFJORD_JUCE_DIR=/path/to/JUCE`). A weekly workflow opens a pull request when a newer JUCE release exists; CI builds and tests it before it is merged. Add
-`-DFJORD_COPY_PLUGIN=OFF` if the plugins should not be copied to your plugin folders.
+The plugin builds with CMake on all three platforms. Fjord is built on [fjord-base](https://github.com/fjord-sounds/fjord-base),
+the code all Fjord plugins share (interface, effects, build helpers): **clone it next to this repository**
+(`git clone https://github.com/fjord-sounds/fjord-base ../fjord-base`) – without it CMake downloads the release pinned
+in `CMakeLists.txt` (`FJORD_BASE_TAG`). JUCE 8 comes through fjord-base: CMake downloads the pinned release on the first
+configure (or uses a checkout in `fjord-base/external/JUCE`). A weekly workflow opens a pull request when fjord-base has
+a new release; CI builds and tests it before it is merged. Add `-DFJORD_COPY_PLUGIN=OFF` if the plugins should not be
+copied to your plugin folders.
 
 **macOS** – Xcode command line tools (compiler/SDK only, the Xcode app is not used) and CMake:
 
@@ -189,13 +193,12 @@ Three LFOs, a mod envelope and a 16-slot modulation matrix with via sources.
 </picture>
 
 ### FX
-Ten effects in a chain you reorder by drag & drop, with FX presets for the whole chain and "Lock FX".
-Every effect also has its own preset menu in its title (20+ settings each – rooms, plates and halls for
-the reverb, tape and tube for the drive, slapback to dub for the delay …), and you can save your own.
-The EQ is fully parametric and is edited right in the graph: drag the six band points (frequency and gain,
-Shift for fine moves), turn the mouse wheel for the Q of the peaks or the slope (12/24 dB) of the cuts,
-double-click empty space to drop a peak there, double-click a point to reset it, right-click for a band menu.
-The output spectrum runs in the background.
+The FX page is the same in all Fjord plugins: fifteen effects and the clipper as live tiles in two rows – drag them
+into any order; the clipper is always last. **FX CHAIN** loads a whole chain (35 factory chains, your own are saved
+to `~/Music/Fjord/FX Chains`), **Lock FX** keeps the effects while you browse sounds. Every effect has its own preset
+menu in its title (at least 40 factory presets each – rooms, plates and halls for the reverb, tape and tube for the
+saturation, slapback to dub for the delay …), and you can save your own. The EQ is edited right in the graph: drag the
+band points, turn the mouse wheel for the Q or the slope (12/24 dB) of the cuts.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/fx-dark.webp">
@@ -266,7 +269,7 @@ differs from its default) on the clipboard for bug reports. "Show plugin" reveal
 | **Synth** | 8 oscillators (sine, triangle, saw, square, 24 wavetables; the row scrolls sideways past the first four), unison up to 8 voices, sub, noise, 2 filters (ladder, SVF, comb, formant; serial/parallel), filter/amp envelopes with draggable graphs, poly/mono/legato, glide, analog drift, key follow, amp curve |
 | **Osc** | All 8 oscillators at a glance (4 × 2) – chords in one key, additive organs and bells, layered supersaw walls |
 | **Mod** | 3 LFOs (tempo sync, retrigger, fade), mod envelope, 16-slot modulation matrix (source → destination, via) |
-| **FX** | Drive, bitcrush, parametric EQ (low/high cut 12/24 dB, two shelves, two peaks, edited in the graph), compressor (knee, sidechain filter, auto gain), chorus, phaser, flanger, delay, reverb, width – reorder by drag & drop; FX presets |
+| **FX** | The sixteen effects of fjord-base (below) in a chain you reorder by drag & drop; effect chains, Lock FX, presets per effect |
 | **Comp** | The compressor up close: transfer curve to drag (threshold, ratio), scrolling input/output/reduction history, IN/GR/OUT meters, knee, sidechain filter, auto gain and one-click characters (Gentle, Glue, Punch, Squash, Parallel, Breathe) |
 | **Arp** | 11 modes, rate, octaves, gate, swing, repeats, chance, retrigger, latch; 16-step pattern with velocity, pitch and tie lanes, pattern presets |
 | **Rhythm** | Step gate (8/16/32 steps, patterns), stutter (auto or mod wheel, with timeline and presets), sidechain pump – synced to the song |
@@ -282,6 +285,15 @@ the step gate, the stutter and the pump. The oscillator, filter, effect and rhyt
 Locked parts stay exactly as they are when you switch presets, so you can keep the arp pattern and the delay of one
 sound and try them on many others.
 
+## Effects
+
+Fjord uses the effects of [fjord-base](https://github.com/fjord-sounds/fjord-base): Saturation, Lo-Fi, Transient,
+Compressor (also on its own COMP page), Squash, EQ, Filter, Motion (chorus, ensemble, phaser, flanger, doubler, vibrato),
+Delay, Reverb, Width, Tremolo / Auto-Pan, Frequency Shifter, Exciter, Harmonizer and the Clipper. Every effect also exists
+as a plugin of its own ("Fjord Reverb" …). All parameters:
+[fjord-base/docs/effects.md](https://github.com/fjord-sounds/fjord-base/blob/main/docs/effects.md). The filter envelope of
+the Filter effect restarts with every note you play, and effect parameters can be modulation destinations.
+
 ## Presets
 
 - Factory presets: `presets/Factory/<category>/*.fjord` (embedded in the plugin)
@@ -289,13 +301,13 @@ sound and try them on many others.
 - Categories: Pad, Atmos, Lead, Pluck, Keys, Bass, Arp, Gated, Drums, FX
 - Tags: every factory preset has tags for character, movement, space, shape and style; your own presets get the
   tags you type in the save dialog (prefilled with the tags of the preset you started from)
-- FX presets (effect chain only): at the top of the FX page; user FX presets live in `~/Music/Fjord/FX Presets`.
-- Effect module presets (one effect only, 216 factory presets): menu in each effect's title;
-  your own live in `~/Music/Fjord/FX Module Presets/<effect>`.
+- Effect chains (all effects): at the top of the FX page; user chains live in `~/Music/Fjord/FX Chains`.
+- Effect presets (one effect only, at least 40 factory presets per effect): menu in each effect's title; your own live in
+  `~/Music/Fjord/FX Presets/<effect>`. Effect presets and chains come from fjord-base and are shared by all Fjord plugins.
   "Lock FX" keeps the effects when switching sound presets.
 
-The factory presets are plain XML files in `presets/` (`Factory`, `FxFactory`, `FxModules`). They are embedded in the
-plugin at build time, so adding or changing a file there and rebuilding is all it takes. Parameter IDs are listed by
+The factory sound presets are plain XML files in `presets/Factory`; the effect presets and chains live in fjord-base. They
+are embedded in the plugin at build time, so adding or changing a file there and rebuilding is all it takes. Parameter IDs are listed by
 `FjordRenderTest --params <file>`; parameters a preset leaves out use their default. `FjordRenderTest --loudness
 <json>` measures how loud each preset is.
 
@@ -333,18 +345,16 @@ The images in this README are made by a script, so they can be renewed after eve
 
 ```bash
 cmake --build build --target FjordRenderTest
-cd tools/screenshots
-npm install && npx playwright install chromium   # once
-node shoot.mjs                                   # all images -> docs/screenshots/
-node shoot.mjs hero synth                        # only some of them
+cd tools/screenshots && npm install && npx playwright install chromium && cd ../..   # once
+tools/screenshots/shoot.sh                       # all images -> docs/screenshots/
 ```
 
 1. `FjordRenderTest --screenshot <page> <preset> <light|dark> <out.png> [fx] [notes]` (page: play, synth, osc, mod, fx, comp, arp, rhythm, browser, about) renders the real plugin UI
-   offscreen (with held notes on the keyboard) to `build/screenshots/raw/`.
-2. `shoot.mjs` (Playwright) puts these shots on a backdrop – window frame, shadow, fjord silhouette, title –
-   in a light and a dark version; the README shows the one matching the reader's GitHub theme.
+   offscreen (with held notes on the keyboard) to `build/screenshots/raw/`; every page becomes a WebP in `docs/screenshots/`.
+2. `tools/screenshots/hero.mjs` (Playwright) composes the product image and the theme split on a backdrop – window frame,
+   shadow, fjord silhouette, title – in a light and a dark version; the README shows the one matching the reader's GitHub theme.
 
-Which page is shot with which preset is set in `tools/screenshots/shots.config.mjs`.
+Which page is shot with which preset is set in `tools/screenshots/shots.conf`.
 
 ## Icon
 
@@ -363,6 +373,7 @@ Fjord is free software under the **GNU Affero General Public License v3.0** ([LI
 
 - JUCE 8: AGPLv3 (used under its open source licence, downloaded at build time)
 - Manrope font: SIL Open Font License 1.1 (`resources/fonts/OFL.txt`), embedded unmodified
+- fjord-base (shared code): AGPL-3.0
 - Playwright (screenshot tool only, not part of the plugin): Apache License 2.0
 
 See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for details.

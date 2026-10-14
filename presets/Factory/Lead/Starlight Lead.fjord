@@ -6,83 +6,153 @@
   <Param id="amp_sustain" value="0.8181"/>
   <Param id="amp_vel" value="0.2967"/>
   <Param id="filter_cutoff" value="1754.0"/>
-  <Param id="filter_type" value="1"/>
-  <Param id="fx_delay_div" value="8"/>
+  <Param id="filter_type" value="1.0"/>
+  <Param id="fx_compressor_attack" value="10.0"/>
+  <Param id="fx_compressor_autogain" value="0.0"/>
+  <Param id="fx_compressor_hpf" value="20.0"/>
+  <Param id="fx_compressor_knee" value="6.0"/>
+  <Param id="fx_compressor_makeup" value="0.0"/>
+  <Param id="fx_compressor_mix" value="1.0"/>
+  <Param id="fx_compressor_on" value="0.0"/>
+  <Param id="fx_compressor_ratio" value="3.0"/>
+  <Param id="fx_compressor_release" value="150.0"/>
+  <Param id="fx_compressor_thresh" value="-18.0"/>
+  <Param id="fx_delay_damp" value="0.4"/>
+  <Param id="fx_delay_duck" value="0.0"/>
   <Param id="fx_delay_feedback" value="0.3928"/>
+  <Param id="fx_delay_lowcut" value="90.0"/>
   <Param id="fx_delay_mix" value="0.2168"/>
-  <Param id="fx_delay_on" value="1"/>
-  <Param id="fx_delay_pingpong" value="1"/>
+  <Param id="fx_delay_mod" value="0.0"/>
+  <Param id="fx_delay_mode" value="0.0"/>
+  <Param id="fx_delay_note" value="10.0"/>
+  <Param id="fx_delay_on" value="1.0"/>
+  <Param id="fx_delay_pingpong" value="1.0"/>
+  <Param id="fx_delay_spread" value="0.0"/>
+  <Param id="fx_delay_sync" value="1.0"/>
+  <Param id="fx_delay_time" value="350.0"/>
+  <Param id="fx_eq_high_freq" value="7000.0"/>
+  <Param id="fx_eq_high_gain" value="0.0"/>
+  <Param id="fx_eq_highcut" value="20000.0"/>
+  <Param id="fx_eq_highcut_slope" value="0.0"/>
+  <Param id="fx_eq_low_freq" value="120.0"/>
+  <Param id="fx_eq_low_gain" value="0.0"/>
+  <Param id="fx_eq_lowcut" value="20.0"/>
+  <Param id="fx_eq_lowcut_slope" value="0.0"/>
+  <Param id="fx_eq_mid2_freq" value="3000.0"/>
+  <Param id="fx_eq_mid2_gain" value="0.0"/>
+  <Param id="fx_eq_mid2_q" value="0.9"/>
+  <Param id="fx_eq_mid_freq" value="1000.0"/>
+  <Param id="fx_eq_mid_gain" value="0.0"/>
+  <Param id="fx_eq_mid_q" value="0.9"/>
+  <Param id="fx_eq_on" value="0.0"/>
+  <Param id="fx_lofi_age" value="0.0"/>
+  <Param id="fx_lofi_bits" value="10.0"/>
+  <Param id="fx_lofi_flutter" value="0.0"/>
+  <Param id="fx_lofi_jitter" value="0.0"/>
+  <Param id="fx_lofi_mix" value="1.0"/>
+  <Param id="fx_lofi_noise" value="0.0"/>
+  <Param id="fx_lofi_on" value="0.0"/>
+  <Param id="fx_lofi_rate" value="1.0"/>
+  <Param id="fx_lofi_wow" value="0.0"/>
+  <Param id="fx_motion_depth" value="0.5"/>
+  <Param id="fx_motion_feedback" value="0.0"/>
+  <Param id="fx_motion_mix" value="0.5"/>
+  <Param id="fx_motion_mode" value="0.0"/>
+  <Param id="fx_motion_on" value="0.0"/>
+  <Param id="fx_motion_rate" value="0.5"/>
+  <Param id="fx_motion_sync" value="0.0"/>
+  <Param id="fx_out_on" value="0.0"/>
+  <Param id="fx_reverb_damp" value="0.5"/>
   <Param id="fx_reverb_decay" value="2.19"/>
+  <Param id="fx_reverb_duck" value="0.0"/>
+  <Param id="fx_reverb_freeze" value="0.0"/>
+  <Param id="fx_reverb_lowcut" value="20.0"/>
   <Param id="fx_reverb_mix" value="0.1472"/>
-  <Param id="fx_reverb_on" value="1"/>
+  <Param id="fx_reverb_mod" value="0.3"/>
+  <Param id="fx_reverb_mode" value="5.0"/>
+  <Param id="fx_reverb_on" value="1.0"/>
+  <Param id="fx_reverb_predelay" value="0.02"/>
   <Param id="fx_reverb_size" value="0.5523"/>
+  <Param id="fx_reverb_width" value="1.0"/>
+  <Param id="fx_saturation_bias" value="0.3"/>
+  <Param id="fx_saturation_drive" value="0.3"/>
+  <Param id="fx_saturation_mix" value="1.0"/>
+  <Param id="fx_saturation_mode" value="0.0"/>
+  <Param id="fx_saturation_on" value="0.0"/>
+  <Param id="fx_saturation_os" value="1.0"/>
+  <Param id="fx_saturation_out" value="0.0"/>
+  <Param id="fx_saturation_tone" value="-0.166667"/>
+  <Param id="fx_width_amount" value="1.0"/>
+  <Param id="fx_width_haas" value="0.0"/>
+  <Param id="fx_width_mono" value="20.0"/>
+  <Param id="fx_width_on" value="0.0"/>
   <Param id="lfo1_fade" value="0.5113"/>
   <Param id="lfo1_rate" value="5.377"/>
-  <Param id="lfo1_retrig" value="1"/>
-  <Param id="lfo1_shape" value="0"/>
+  <Param id="lfo1_retrig" value="1.0"/>
+  <Param id="lfo1_shape" value="0.0"/>
   <Param id="lfo2_rate" value="0.4912"/>
-  <Param id="lfo2_shape" value="6"/>
+  <Param id="lfo2_shape" value="6.0"/>
   <Param id="lfo3_rate" value="0.3569"/>
-  <Param id="lfo3_shape" value="6"/>
+  <Param id="lfo3_shape" value="6.0"/>
   <Param id="macro1" value="0.5"/>
-  <Param id="master_gain" value="-7.0"/>
   <Param id="mod10_amt" value="0.4454"/>
-  <Param id="mod10_dst" value="37"/>
-  <Param id="mod10_src" value="15"/>
-  <Param id="mod10_via" value="0"/>
+  <Param id="mod10_dst" value="37.0"/>
+  <Param id="mod10_src" value="15.0"/>
+  <Param id="mod10_via" value="0.0"/>
   <Param id="mod11_amt" value="0.6028"/>
-  <Param id="mod11_dst" value="29"/>
-  <Param id="mod11_src" value="16"/>
-  <Param id="mod11_via" value="0"/>
+  <Param id="mod11_dst" value="29.0"/>
+  <Param id="mod11_src" value="16.0"/>
+  <Param id="mod11_via" value="0.0"/>
   <Param id="mod12_amt" value="0.5875"/>
-  <Param id="mod12_dst" value="30"/>
-  <Param id="mod12_src" value="17"/>
-  <Param id="mod12_via" value="0"/>
+  <Param id="mod12_dst" value="30.0"/>
+  <Param id="mod12_src" value="17.0"/>
+  <Param id="mod12_via" value="0.0"/>
   <Param id="mod13_amt" value="0.6133"/>
-  <Param id="mod13_dst" value="16"/>
-  <Param id="mod13_src" value="18"/>
-  <Param id="mod13_via" value="0"/>
+  <Param id="mod13_dst" value="16.0"/>
+  <Param id="mod13_src" value="18.0"/>
+  <Param id="mod13_via" value="0.0"/>
   <Param id="mod14_amt" value="0.6156"/>
-  <Param id="mod14_dst" value="20"/>
-  <Param id="mod14_src" value="19"/>
-  <Param id="mod14_via" value="0"/>
+  <Param id="mod14_dst" value="20.0"/>
+  <Param id="mod14_src" value="19.0"/>
+  <Param id="mod14_via" value="0.0"/>
   <Param id="mod15_amt" value="0.3953"/>
-  <Param id="mod15_dst" value="14"/>
-  <Param id="mod15_src" value="20"/>
-  <Param id="mod15_via" value="0"/>
+  <Param id="mod15_dst" value="14.0"/>
+  <Param id="mod15_src" value="20.0"/>
+  <Param id="mod15_via" value="0.0"/>
   <Param id="mod1_amt" value="0.003899"/>
-  <Param id="mod1_dst" value="1"/>
-  <Param id="mod1_src" value="1"/>
-  <Param id="mod1_via" value="0"/>
+  <Param id="mod1_dst" value="1.0"/>
+  <Param id="mod1_src" value="1.0"/>
+  <Param id="mod1_via" value="0.0"/>
   <Param id="mod2_amt" value="0.3048"/>
-  <Param id="mod2_dst" value="8"/>
-  <Param id="mod2_src" value="2"/>
-  <Param id="mod2_via" value="0"/>
+  <Param id="mod2_dst" value="8.0"/>
+  <Param id="mod2_src" value="2.0"/>
+  <Param id="mod2_via" value="0.0"/>
   <Param id="mod8_amt" value="0.2483"/>
-  <Param id="mod8_dst" value="18"/>
-  <Param id="mod8_src" value="13"/>
-  <Param id="mod8_via" value="0"/>
+  <Param id="mod8_dst" value="18.0"/>
+  <Param id="mod8_src" value="13.0"/>
+  <Param id="mod8_via" value="0.0"/>
   <Param id="mod9_amt" value="0.1805"/>
-  <Param id="mod9_dst" value="18"/>
-  <Param id="mod9_src" value="3"/>
-  <Param id="mod9_via" value="14"/>
-  <Param id="osc1_table" value="5"/>
-  <Param id="osc1_wave" value="4"/>
+  <Param id="mod9_dst" value="18.0"/>
+  <Param id="mod9_src" value="3.0"/>
+  <Param id="mod9_via" value="14.0"/>
+  <Param id="osc1_table" value="5.0"/>
+  <Param id="osc1_wave" value="4.0"/>
   <Param id="osc1_wtpos" value="0.2916"/>
   <Param id="osc2_level" value="0.2955"/>
-  <Param id="osc2_octave" value="1"/>
-  <Param id="osc2_on" value="1"/>
-  <Param id="osc2_wave" value="0"/>
+  <Param id="osc2_octave" value="1.0"/>
+  <Param id="osc2_on" value="1.0"/>
+  <Param id="osc2_wave" value="0.0"/>
   <Param id="osc3_detune" value="0.1488"/>
   <Param id="osc3_level" value="0.2952"/>
-  <Param id="osc3_on" value="1"/>
-  <Param id="osc3_unison" value="3"/>
-  <Param id="osc3_wave" value="2"/>
+  <Param id="osc3_on" value="1.0"/>
+  <Param id="osc3_unison" value="3.0"/>
+  <Param id="osc3_wave" value="2.0"/>
   <Param id="osc4_level" value="0.06142"/>
-  <Param id="osc4_octave" value="2"/>
-  <Param id="osc4_on" value="1"/>
-  <Param id="osc4_semi" value="7"/>
-  <Param id="osc4_wave" value="0"/>
+  <Param id="osc4_octave" value="2.0"/>
+  <Param id="osc4_on" value="1.0"/>
+  <Param id="osc4_semi" value="7.0"/>
+  <Param id="osc4_wave" value="0.0"/>
+  <Param id="preset_level" value="-4.0"/>
   <Param id="voice_glide" value="0.06131"/>
-  <Param id="voice_mode" value="2"/>
+  <Param id="voice_mode" value="2.0"/>
 </FjordPreset>

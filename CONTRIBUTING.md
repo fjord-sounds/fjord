@@ -7,6 +7,7 @@ By contributing you agree that your work is licensed under the [AGPL-3.0](LICENS
 ## Build
 
 ```bash
+git clone https://github.com/fjord-sounds/fjord-base.git      # shared code, must sit next to fjord
 git clone https://github.com/fjord-sounds/fjord.git && cd fjord
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DFJORD_COPY_PLUGIN=OFF
 cmake --build build -j8
@@ -14,7 +15,9 @@ cmake --build build --target FjordRenderTest -j8
 ./build/FjordRenderTest_artefacts/Release/FjordRenderTest build/renders      # must print ALL PASSED
 ```
 
-JUCE 8 is downloaded by CMake on the first configure (or use a local checkout: `-DFJORD_JUCE_DIR=/path/to/JUCE`).
+Fjord is built on [fjord-base](https://github.com/fjord-sounds/fjord-base) (shared UI, effects, build helpers): clone it next to this
+repository, otherwise CMake downloads the pinned version (`FJORD_BASE_TAG`). JUCE 8 comes through fjord-base. Changes to the
+effects, header, preset browser or controls belong in fjord-base ([docs](https://github.com/fjord-sounds/fjord-base/tree/main/docs)).
 `./build.sh` is the macOS shortcut that also installs the plugins and runs `auval`. The offline test tool
 (`FjordRenderTest`) and the screenshot tooling are described in the README.
 

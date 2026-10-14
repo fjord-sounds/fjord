@@ -1,7 +1,7 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "dsp/EngineParams.h"
-#include "fx/FxParams.h"
+#include <fjord_base/fx/FxParams.h>
 #include "fx/Rhythm.h"
 
 namespace fjord::params
@@ -11,9 +11,6 @@ namespace fjord::params
     inline juce::String lfo (int index, const char* name)   { return "lfo" + juce::String (index + 1) + "_" + name; }
     inline juce::String mod (int slot, const char* name)    { return "mod" + juce::String (slot + 1) + "_" + name; }
     inline juce::String macro (int index)                   { return "macro" + juce::String (index + 1); }
-    inline juce::String fx (int type, const char* name)     { return "fx_" + fx::fxIds()[type] + "_" + name; }
-
-    inline const juce::StringArray driveTypeNames { "Tape", "Tube", "Fold", "Hard" };
 
     inline constexpr auto masterGain   = "master_gain";
     inline constexpr auto presetLevel  = "preset_level";   // per-preset level trim (set by the factory presets' loudness matching)
@@ -91,20 +88,18 @@ namespace fjord::params
         std::array<Ref, rhythm::kArpSteps> arpVel {}, arpPitch {}, arpTie {};
     };
 
-    // Effect parameters + global modulation of the effects from the matrix
+    // The shared effect block of fjord-base (plain values) + Fjord's global modulation of the effects from the matrix
     class FxParamReader
     {
     public:
+        using Values = std::array<float, fjord::base::fx::NumParams>;
         explicit FxParamReader (juce::AudioProcessorValueTreeState&);
-        using Ref = std::atomic<float>*;
 
         // globalSource returns the current value of a global mod source (or 0 for voice sources)
-        void read (fx::FxParams&, const dsp::EngineParams&, const std::function<float (dsp::ModSource)>& globalSource) const;
+        void read (Values&, const dsp::EngineParams&, const std::function<float (dsp::ModSource)>& globalSource) const;
 
     private:
-        static float v (Ref r) { return r->load (std::memory_order_relaxed); }
-        std::array<Ref, fx::kNumFx> onRefs {};
-        Ref r0_amount = nullptr, r0_mix = nullptr, r0_tone = nullptr, r0_type = nullptr, r1_bits = nullptr, r1_mix = nullptr, r1_rate = nullptr, r2_high = nullptr, r2_highcut = nullptr, r2_low = nullptr, r2_lowcut = nullptr, r2_mid = nullptr, r2_midfreq = nullptr, r2_lcslope = nullptr, r2_lowfreq = nullptr, r2_midq = nullptr, r2_mid2freq = nullptr, r2_mid2 = nullptr, r2_mid2q = nullptr, r2_highfreq = nullptr, r2_hcslope = nullptr, r3_attack = nullptr, r3_makeup = nullptr, r3_mix = nullptr, r3_ratio = nullptr, r3_release = nullptr, r3_thresh = nullptr, r4_depth = nullptr, r4_mix = nullptr, r4_rate = nullptr, r5_depth = nullptr, r5_feedback = nullptr, r5_mix = nullptr, r5_rate = nullptr, r6_depth = nullptr, r6_feedback = nullptr, r6_mix = nullptr, r6_rate = nullptr, r7_damp = nullptr, r7_div = nullptr, r7_duck = nullptr, r7_feedback = nullptr, r7_mix = nullptr, r7_pingpong = nullptr, r7_sync = nullptr, r7_time = nullptr, r8_damp = nullptr, r8_decay = nullptr, r8_mix = nullptr, r8_predelay = nullptr, r8_size = nullptr, r8_width = nullptr, r9_amount = nullptr, r3_knee = nullptr, r3_schpf = nullptr, r3_autogain = nullptr;
+        std::array<std::atomic<float>*, fjord::base::fx::NumParams> raw {};
     };
 
     // Holds direct pointers to the parameter values and builds the engine parameters from them per block.

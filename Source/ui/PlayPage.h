@@ -2,7 +2,7 @@
 #include <juce_dsp/juce_dsp.h>
 #include <optional>
 #include "SynthPage.h"
-#include "PresetBrowser.h"
+#include "Theme.h"
 
 namespace fjord::ui
 {

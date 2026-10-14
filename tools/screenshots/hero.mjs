@@ -1,28 +1,25 @@
 #!/usr/bin/env node
-// Makes the README screenshots in two steps:
-//   1. FjordRenderTest --screenshot renders the real plugin UI (JUCE, offscreen) for every entry in RAW_SHOTS,
-//      in the light and the dark theme -> build/screenshots/raw/<id>-<theme>.png
-//   2. Playwright lays these out on a backdrop (window frame, shadow, fjord silhouette, title) and saves
-//      every composition in COMPOSITIONS -> docs/screenshots/<id>-<theme>.webp
-//      (compressed with cwebp, so the repository stays small; the lossless PNGs stay in build/screenshots/)
+// Composes the product images of the README from the raw page shots (build/screenshots/raw, made by shoot.sh):
+//   docs/screenshots/hero-<light|dark>.webp   two Fjord windows in perspective over the fjord, logo and key facts
+//   docs/screenshots/themes.webp             the synth page, light and dark, split diagonally
 //
-// Usage (from this folder):
-//   npm install && npx playwright install chromium     # once
-//   node shoot.mjs                  # everything
-//   node shoot.mjs synth hero       # only these compositions (and the raw shots they need)
-//   node shoot.mjs --no-raw         # reuse the raw shots from the last run
+//   tools/screenshots/shoot.sh        # makes the raw page shots first, then calls this script
+//   node hero.mjs                     # only the compositions
 //
-// Requires a built test tool (cmake --build build --target FjordRenderTest) and cwebp (brew install webp).
+// Requires Playwright (npm install && npx playwright install chromium in this folder) and cwebp.
 
 import { chromium } from "playwright";
 import { execFileSync } from "node:child_process";
-import { existsSync, mkdirSync, readdirSync, statSync, unlinkSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { RAW_SHOTS, COMPOSITIONS } from "./shots.config.mjs";
+
+const COMPOSITIONS = [
+  { id: "hero",   layout: "hero",  front: "synth", back: "fx" },
+  { id: "themes", layout: "split", shot: "synth", themed: false },
+];
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
-const TOOL = join(ROOT, "build/FjordRenderTest_artefacts/Release/FjordRenderTest");
 const RAW_DIR = join(ROOT, "build/screenshots/raw");
 const OUT_DIR = join(ROOT, "docs/screenshots");
 const PNG_DIR = join(ROOT, "build/screenshots/png");
@@ -41,37 +38,6 @@ const PALETTE = {
            shadow: "rgba(0,0,0,0.60)" },
 };
 
-// ------------------------------------------------------------------ arguments
-const args = process.argv.slice(2);
-const skipRaw = args.includes("--no-raw");
-const only = args.filter((a) => !a.startsWith("--"));
-const compositions = only.length ? COMPOSITIONS.filter((c) => only.includes(c.id)) : COMPOSITIONS;
-if (!compositions.length) {
-  console.error(`No composition matches ${only.join(", ")}. Known: ${COMPOSITIONS.map((c) => c.id).join(", ")}`);
-  process.exit(1);
-}
-
-// ------------------------------------------------------------------ step 1: raw UI shots
-const rawPath = (id, theme) => join(RAW_DIR, `${id}-${theme}.png`);
-const neededRaw = new Set(compositions.flatMap((c) => [c.shot, c.front, c.back].filter(Boolean)));
-
-if (!skipRaw) {
-  if (!existsSync(TOOL)) {
-    console.error(`FjordRenderTest not found – build it first:\n  cmake --build build --target FjordRenderTest`);
-    process.exit(1);
-  }
-  mkdirSync(RAW_DIR, { recursive: true });
-  for (const shot of RAW_SHOTS.filter((s) => neededRaw.has(s.id))) {
-    for (const theme of THEMES) {
-      const cmd = ["--screenshot", shot.page, shot.preset, theme, rawPath(shot.id, theme),
-                   String(shot.fx ?? -1), shot.notes.join(",") || "0"];
-      execFileSync(TOOL, cmd, { cwd: ROOT, stdio: ["ignore", "ignore", "inherit"] });
-      console.log(`raw   ${shot.id}-${theme}  (${shot.preset})`);
-    }
-  }
-}
-
-// ------------------------------------------------------------------ step 2: compose with Playwright
 function presetCount() {
   let n = 0;
   const walk = (dir) => {
@@ -85,7 +51,7 @@ function presetCount() {
   return n;
 }
 
-const img = (id, theme) => pathToFileURL(rawPath(id, theme)).href;
+const img = (id, theme) => pathToFileURL(join(RAW_DIR, `${id}-${theme}.png`)).href;
 
 // Layered mountain ridges – the "fjord" at the bottom of every backdrop
 function ridges(c, height) {
@@ -121,18 +87,6 @@ function baseCss(c) {
   }`;
 }
 
-function windowLayout(comp, theme) {
-  const c = PALETTE[theme];
-  return {
-    viewport: { width: 1400, height: 1000 },
-    html: `<style>${baseCss(c)}
-      .stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-      .window { width: 1200px; }</style>
-      ${ridges(c, 300)}
-      <div class="stage"><img class="window" src="${img(comp.shot, theme)}"></div>`,
-  };
-}
-
 function heroLayout(comp, theme) {
   const c = PALETTE[theme];
   const other = theme === "light" ? "dark" : "light";
@@ -156,7 +110,7 @@ function heroLayout(comp, theme) {
         <div class="tag">Warm, soft synthesis for every DAW.<br>Nothing sampled.</div>
         <div class="facts">
           <b>4</b> oscillators · <b>24</b> wavetables<br>
-          <b>10</b> effects · arp, gate, stutter, pump<br>
+          <b>15</b> effects · arp, gate, stutter, pump<br>
           <b>${presetCount().toLocaleString("en-US")}</b> factory presets<br>
           <b>VST3</b> · <b>AU</b> · <b>LV2</b> · standalone
         </div>
@@ -191,7 +145,8 @@ function splitLayout(comp) {
   };
 }
 
-const LAYOUTS = { window: windowLayout, hero: heroLayout, split: splitLayout };
+const LAYOUTS = { hero: heroLayout, split: splitLayout };
+const compositions = COMPOSITIONS;
 
 mkdirSync(OUT_DIR, { recursive: true });
 mkdirSync(PNG_DIR, { recursive: true });

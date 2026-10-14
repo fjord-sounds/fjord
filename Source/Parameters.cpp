@@ -165,94 +165,6 @@ namespace fjord::params
             addChoice (layout, mod (i, "via"), n + "Via", dsp::modSourceNames(), 0);
         }
 
-        // ---------------------------------------------------------------- Effects
-        using fx::FxType;
-        auto fxOn = [&] (FxType t, bool def) { addBool (layout, fx ((int) t, "on"), fx::fxNames()[(int) t] + " On", def); };
-        auto fxName = [] (FxType t, const char* n) { return fx::fxNames()[(int) t] + " " + n; };
-        auto fmtMs = [] (float v, int) { return juce::String (juce::roundToInt (v)) + " ms"; };
-
-        fxOn (FxType::Drive, false);
-        addChoice (layout, fx (0, "type"),   fxName (FxType::Drive, "Type"), driveTypeNames, 0);
-        addFloat  (layout, fx (0, "amount"), fxName (FxType::Drive, "Amount"), Range (0.0f, 1.0f), 0.3f, fmtPercent);
-        addFloat  (layout, fx (0, "tone"),   fxName (FxType::Drive, "Tone"), Range (0.0f, 1.0f), 0.75f, fmtPercent);
-        addFloat  (layout, fx (0, "mix"),    fxName (FxType::Drive, "Mix"), Range (0.0f, 1.0f), 1.0f, fmtPercent);
-
-        fxOn (FxType::Crush, false);
-        addFloat (layout, fx (1, "bits"), fxName (FxType::Crush, "Bits"), Range (2.0f, 16.0f), 10.0f,
-                  [] (float v, int) { return juce::String (v, 1) + " bit"; });
-        addFloat (layout, fx (1, "rate"), fxName (FxType::Crush, "Downsample"), logRange (1.0f, 40.0f), 1.0f,
-                  [] (float v, int) { return juce::String (v, 1) + "x"; });
-        addFloat (layout, fx (1, "mix"),  fxName (FxType::Crush, "Mix"), Range (0.0f, 1.0f), 1.0f, fmtPercent);
-
-        fxOn (FxType::Eq, false);
-        // Parametric EQ. IDs of the original five-band EQ are kept, so older presets load unchanged.
-        auto fmtQ = [] (float v, int) { return "Q " + juce::String (v, 2); };
-        const juce::StringArray slopeNames { "12 dB", "24 dB" };
-        addFloat  (layout, fx (2, "lowcut"),   fxName (FxType::Eq, "Low Cut"), logRange (20.0f, 2000.0f), 20.0f, fmtHz);
-        addChoice (layout, fx (2, "lcslope"),  fxName (FxType::Eq, "Low Cut Slope"), slopeNames, 0);
-        addFloat  (layout, fx (2, "lowfreq"),  fxName (FxType::Eq, "Low Freq"), logRange (30.0f, 1000.0f), 120.0f, fmtHz);
-        addFloat  (layout, fx (2, "low"),      fxName (FxType::Eq, "Low"), Range (-18.0f, 18.0f), 0.0f, fmtDb);
-        addFloat  (layout, fx (2, "midfreq"),  fxName (FxType::Eq, "Mid Freq"), logRange (40.0f, 16000.0f), 1000.0f, fmtHz);
-        addFloat  (layout, fx (2, "mid"),      fxName (FxType::Eq, "Mid"), Range (-18.0f, 18.0f), 0.0f, fmtDb);
-        addFloat  (layout, fx (2, "midq"),     fxName (FxType::Eq, "Mid Q"), logRange (0.2f, 12.0f), 0.9f, fmtQ);
-        addFloat  (layout, fx (2, "mid2freq"), fxName (FxType::Eq, "Mid 2 Freq"), logRange (40.0f, 16000.0f), 3000.0f, fmtHz);
-        addFloat  (layout, fx (2, "mid2"),     fxName (FxType::Eq, "Mid 2"), Range (-18.0f, 18.0f), 0.0f, fmtDb);
-        addFloat  (layout, fx (2, "mid2q"),    fxName (FxType::Eq, "Mid 2 Q"), logRange (0.2f, 12.0f), 0.9f, fmtQ);
-        addFloat  (layout, fx (2, "highfreq"), fxName (FxType::Eq, "High Freq"), logRange (1000.0f, 16000.0f), 7000.0f, fmtHz);
-        addFloat  (layout, fx (2, "high"),     fxName (FxType::Eq, "High"), Range (-18.0f, 18.0f), 0.0f, fmtDb);
-        addFloat  (layout, fx (2, "highcut"),  fxName (FxType::Eq, "High Cut"), logRange (200.0f, 20000.0f), 20000.0f, fmtHz);
-        addChoice (layout, fx (2, "hcslope"),  fxName (FxType::Eq, "High Cut Slope"), slopeNames, 0);
-
-        fxOn (FxType::Comp, false);
-        addFloat (layout, fx (3, "thresh"),  fxName (FxType::Comp, "Threshold"), Range (-48.0f, 0.0f), -18.0f, fmtDb);
-        addFloat (layout, fx (3, "ratio"),   fxName (FxType::Comp, "Ratio"), logRange (1.0f, 20.0f), 3.0f,
-                  [] (float v, int) { return juce::String (v, 1) + ":1"; });
-        addFloat (layout, fx (3, "attack"),  fxName (FxType::Comp, "Attack"), timeRange (0.2f, 0.02f), 0.01f, fmtTime);
-        addFloat (layout, fx (3, "release"), fxName (FxType::Comp, "Release"), timeRange (1.5f, 0.2f), 0.15f, fmtTime);
-        addFloat (layout, fx (3, "makeup"),  fxName (FxType::Comp, "Makeup"), Range (0.0f, 24.0f), 0.0f, fmtDb);
-        addFloat (layout, fx (3, "mix"),     fxName (FxType::Comp, "Mix"), Range (0.0f, 1.0f), 1.0f, fmtPercent);
-
-        fxOn (FxType::Chorus, false);
-        addFloat (layout, fx (4, "rate"),  fxName (FxType::Chorus, "Rate"), logRange (0.05f, 5.0f), 0.5f,
-                  [] (float v, int) { return juce::String (v, 2) + " Hz"; });
-        addFloat (layout, fx (4, "depth"), fxName (FxType::Chorus, "Depth"), Range (0.0f, 1.0f), 0.5f, fmtPercent);
-        addFloat (layout, fx (4, "mix"),   fxName (FxType::Chorus, "Mix"), Range (0.0f, 1.0f), 0.5f, fmtPercent);
-
-        fxOn (FxType::Phaser, false);
-        addFloat (layout, fx (5, "rate"),     fxName (FxType::Phaser, "Rate"), logRange (0.02f, 5.0f), 0.3f,
-                  [] (float v, int) { return juce::String (v, 2) + " Hz"; });
-        addFloat (layout, fx (5, "depth"),    fxName (FxType::Phaser, "Depth"), Range (0.0f, 1.0f), 0.6f, fmtPercent);
-        addFloat (layout, fx (5, "feedback"), fxName (FxType::Phaser, "Feedback"), Range (0.0f, 1.0f), 0.4f, fmtPercent);
-        addFloat (layout, fx (5, "mix"),      fxName (FxType::Phaser, "Mix"), Range (0.0f, 1.0f), 0.6f, fmtPercent);
-
-        fxOn (FxType::Flanger, false);
-        addFloat (layout, fx (6, "rate"),     fxName (FxType::Flanger, "Rate"), logRange (0.02f, 5.0f), 0.2f,
-                  [] (float v, int) { return juce::String (v, 2) + " Hz"; });
-        addFloat (layout, fx (6, "depth"),    fxName (FxType::Flanger, "Depth"), Range (0.0f, 1.0f), 0.6f, fmtPercent);
-        addFloat (layout, fx (6, "feedback"), fxName (FxType::Flanger, "Feedback"), Range (0.0f, 1.0f), 0.5f, fmtPercent);
-        addFloat (layout, fx (6, "mix"),      fxName (FxType::Flanger, "Mix"), Range (0.0f, 1.0f), 0.5f, fmtPercent);
-
-        fxOn (FxType::Delay, false);
-        addBool   (layout, fx (7, "sync"),     fxName (FxType::Delay, "Sync"), true);
-        addChoice (layout, fx (7, "div"),      fxName (FxType::Delay, "Division"), dsp::divisionNames(), 11);
-        addFloat  (layout, fx (7, "time"),     fxName (FxType::Delay, "Time"), logRange (10.0f, 2000.0f), 350.0f, fmtMs);
-        addFloat  (layout, fx (7, "feedback"), fxName (FxType::Delay, "Feedback"), Range (0.0f, 0.95f), 0.35f, fmtPercent);
-        addBool   (layout, fx (7, "pingpong"), fxName (FxType::Delay, "Ping Pong"), true);
-        addFloat  (layout, fx (7, "damp"),     fxName (FxType::Delay, "Damp"), Range (0.0f, 1.0f), 0.4f, fmtPercent);
-        addFloat  (layout, fx (7, "duck"),     fxName (FxType::Delay, "Ducking"), Range (0.0f, 1.0f), 0.0f, fmtPercent);
-        addFloat  (layout, fx (7, "mix"),      fxName (FxType::Delay, "Mix"), Range (0.0f, 1.0f), 0.25f, fmtPercent);
-
-        fxOn (FxType::Reverb, false);
-        addFloat (layout, fx (8, "size"),     fxName (FxType::Reverb, "Size"), Range (0.0f, 1.0f), 0.6f, fmtPercent);
-        addFloat (layout, fx (8, "decay"),    fxName (FxType::Reverb, "Decay"), logRange (0.3f, 20.0f), 3.0f, fmtTime);
-        addFloat (layout, fx (8, "damp"),     fxName (FxType::Reverb, "Damp"), Range (0.0f, 1.0f), 0.5f, fmtPercent);
-        addFloat (layout, fx (8, "predelay"), fxName (FxType::Reverb, "Pre-Delay"), Range (0.0f, 0.25f), 0.02f, fmtTime);
-        addFloat (layout, fx (8, "width"),    fxName (FxType::Reverb, "Width"), Range (0.0f, 1.5f), 1.0f, fmtPercent);
-        addFloat (layout, fx (8, "mix"),      fxName (FxType::Reverb, "Mix"), Range (0.0f, 1.0f), 0.25f, fmtPercent);
-
-        fxOn (FxType::Width, false);
-        addFloat (layout, fx (9, "amount"), fxName (FxType::Width, "Amount"), Range (0.0f, 2.0f), 1.0f, fmtPercent);
-
         // ---------------------------------------------------------------- Rhythm
         addBool   (layout, "arp_on",     "Arp On", false);
         addChoice (layout, "arp_mode",   "Arp Mode", arpModeNames, 0);
@@ -320,11 +232,8 @@ namespace fjord::params
         for (int i = dsp::kNumBaseOsc; i < dsp::kNumOsc; ++i)
             addOsc (i);
 
-        // Compressor additions (defaults keep the original behaviour: 6 dB knee, no sidechain filter, manual makeup)
-        addFloat (layout, fx (3, "knee"),     fxName (FxType::Comp, "Knee"), Range (0.0f, 24.0f), 6.0f, fmtDb);
-        addFloat (layout, fx (3, "schpf"),    fxName (FxType::Comp, "Sidechain HPF"), logRange (20.0f, 500.0f), 20.0f,
-                  [] (float v, int) { return v < 20.5f ? juce::String ("Off") : juce::String (juce::roundToInt (v)) + " Hz"; });
-        addBool  (layout, fx (3, "autogain"), fxName (FxType::Comp, "Auto Gain"), false);
+        // The effects: the shared block of fjord-base (the same effects in every Fjord plugin)
+        fjord::base::params::addToLayout (layout, fjord::base::fx::specs());
 
         return layout;
     }
@@ -461,73 +370,25 @@ namespace fjord::params
     // ---------------------------------------------------------------------------------------------
     FxParamReader::FxParamReader (juce::AudioProcessorValueTreeState& s)
     {
-        for (int t = 0; t < fx::kNumFx; ++t)
-            onRefs[(size_t) t] = s.getRawParameterValue (fx (t, "on"));
-        r0_amount = s.getRawParameterValue (fx (0, "amount"));
-        r0_mix = s.getRawParameterValue (fx (0, "mix"));
-        r0_tone = s.getRawParameterValue (fx (0, "tone"));
-        r0_type = s.getRawParameterValue (fx (0, "type"));
-        r1_bits = s.getRawParameterValue (fx (1, "bits"));
-        r1_mix = s.getRawParameterValue (fx (1, "mix"));
-        r1_rate = s.getRawParameterValue (fx (1, "rate"));
-        r2_high = s.getRawParameterValue (fx (2, "high"));
-        r2_highcut = s.getRawParameterValue (fx (2, "highcut"));
-        r2_low = s.getRawParameterValue (fx (2, "low"));
-        r2_lowcut = s.getRawParameterValue (fx (2, "lowcut"));
-        r2_mid = s.getRawParameterValue (fx (2, "mid"));
-        r2_midfreq = s.getRawParameterValue (fx (2, "midfreq"));
-        r2_lcslope = s.getRawParameterValue (fx (2, "lcslope"));
-        r2_lowfreq = s.getRawParameterValue (fx (2, "lowfreq"));
-        r2_midq = s.getRawParameterValue (fx (2, "midq"));
-        r2_mid2freq = s.getRawParameterValue (fx (2, "mid2freq"));
-        r2_mid2 = s.getRawParameterValue (fx (2, "mid2"));
-        r2_mid2q = s.getRawParameterValue (fx (2, "mid2q"));
-        r2_highfreq = s.getRawParameterValue (fx (2, "highfreq"));
-        r2_hcslope = s.getRawParameterValue (fx (2, "hcslope"));
-        r3_attack = s.getRawParameterValue (fx (3, "attack"));
-        r3_makeup = s.getRawParameterValue (fx (3, "makeup"));
-        r3_mix = s.getRawParameterValue (fx (3, "mix"));
-        r3_ratio = s.getRawParameterValue (fx (3, "ratio"));
-        r3_release = s.getRawParameterValue (fx (3, "release"));
-        r3_thresh = s.getRawParameterValue (fx (3, "thresh"));
-        r4_depth = s.getRawParameterValue (fx (4, "depth"));
-        r4_mix = s.getRawParameterValue (fx (4, "mix"));
-        r4_rate = s.getRawParameterValue (fx (4, "rate"));
-        r5_depth = s.getRawParameterValue (fx (5, "depth"));
-        r5_feedback = s.getRawParameterValue (fx (5, "feedback"));
-        r5_mix = s.getRawParameterValue (fx (5, "mix"));
-        r5_rate = s.getRawParameterValue (fx (5, "rate"));
-        r6_depth = s.getRawParameterValue (fx (6, "depth"));
-        r6_feedback = s.getRawParameterValue (fx (6, "feedback"));
-        r6_mix = s.getRawParameterValue (fx (6, "mix"));
-        r6_rate = s.getRawParameterValue (fx (6, "rate"));
-        r7_damp = s.getRawParameterValue (fx (7, "damp"));
-        r7_div = s.getRawParameterValue (fx (7, "div"));
-        r7_duck = s.getRawParameterValue (fx (7, "duck"));
-        r7_feedback = s.getRawParameterValue (fx (7, "feedback"));
-        r7_mix = s.getRawParameterValue (fx (7, "mix"));
-        r7_pingpong = s.getRawParameterValue (fx (7, "pingpong"));
-        r7_sync = s.getRawParameterValue (fx (7, "sync"));
-        r7_time = s.getRawParameterValue (fx (7, "time"));
-        r8_damp = s.getRawParameterValue (fx (8, "damp"));
-        r8_decay = s.getRawParameterValue (fx (8, "decay"));
-        r8_mix = s.getRawParameterValue (fx (8, "mix"));
-        r8_predelay = s.getRawParameterValue (fx (8, "predelay"));
-        r8_size = s.getRawParameterValue (fx (8, "size"));
-        r8_width = s.getRawParameterValue (fx (8, "width"));
-        r9_amount = s.getRawParameterValue (fx (9, "amount"));
-        r3_knee = s.getRawParameterValue (fx (3, "knee"));
-        r3_schpf = s.getRawParameterValue (fx (3, "schpf"));
-        r3_autogain = s.getRawParameterValue (fx (3, "autogain"));
+        for (int i = 0; i < fjord::base::fx::NumParams; ++i)
+        {
+            raw[(size_t) i] = s.getRawParameterValue (fjord::base::fx::paramId ((fjord::base::fx::Param) i));
+            jassert (raw[(size_t) i] != nullptr);
+        }
     }
 
-    void FxParamReader::read (fx::FxParams& p, const dsp::EngineParams& ep,
+    void FxParamReader::read (Values& out, const dsp::EngineParams& ep,
                               const std::function<float (dsp::ModSource)>& globalSource) const
     {
         using dsp::ModDest;
+        namespace fx = fjord::base::fx;
 
-        // Global modulation of the effects from the matrix
+        for (size_t i = 0; i < raw.size(); ++i)
+            out[i] = raw[i]->load (std::memory_order_relaxed);
+
+        // Global modulation of the effects from the matrix (Fjord's effect destinations)
         std::array<float, (size_t) ModDest::Count> m {};
+        bool any = false;
         for (const auto& slot : ep.matrix)
         {
             if ((int) slot.dest < dsp::kFirstFxDest || (int) slot.dest > dsp::kLastFxDest
@@ -537,78 +398,19 @@ namespace fjord::params
             if (slot.via != dsp::ModSource::None)
                 v *= globalSource (slot.via);
             m[(size_t) slot.dest] += v;
+            any = true;
         }
-        auto mod01 = [&m] (float base, ModDest d) { return std::clamp (base + m[(size_t) d], 0.0f, 1.0f); };
+        if (! any) return;
 
-        for (int t = 0; t < fx::kNumFx; ++t)
-            p.on[(size_t) t] = v (onRefs[(size_t) t]) > 0.5f;
-
-        p.driveType = juce::roundToInt (v (r0_type));
-        p.driveAmount = mod01 (v (r0_amount), ModDest::FxDrive);
-        p.driveTone = v (r0_tone);
-        p.driveMix = v (r0_mix);
-
-        p.crushBits = v (r1_bits);
-        p.crushRate = v (r1_rate);
-        p.crushMix = mod01 (v (r1_mix), ModDest::CrushMix);
-
-        auto& e = p.eq;
-        e.lowCut = v (r2_lowcut);
-        e.lowCutSlope = juce::roundToInt (v (r2_lcslope));
-        e.lowFreq = v (r2_lowfreq);
-        e.low = v (r2_low);
-        e.midFreq = v (r2_midfreq);
-        e.mid = v (r2_mid);
-        e.midQ = v (r2_midq);
-        e.mid2Freq = v (r2_mid2freq);
-        e.mid2 = v (r2_mid2);
-        e.mid2Q = v (r2_mid2q);
-        e.highFreq = v (r2_highfreq);
-        e.high = v (r2_high);
-        e.highCut = v (r2_highcut);
-        e.highCutSlope = juce::roundToInt (v (r2_hcslope));
-
-        p.compThreshold = v (r3_thresh);
-        p.compRatio = v (r3_ratio);
-        p.compAttack = v (r3_attack);
-        p.compRelease = v (r3_release);
-        p.compMakeup = v (r3_makeup);
-        p.compMix = v (r3_mix);
-        p.compKnee = v (r3_knee);
-        p.compScHpf = v (r3_schpf);
-        p.compAutoGain = v (r3_autogain) > 0.5f;
-
-        p.chorusRate = v (r4_rate);
-        p.chorusDepth = v (r4_depth);
-        p.chorusMix = mod01 (v (r4_mix), ModDest::ChorusMix);
-
-        p.phaserRate = v (r5_rate);
-        p.phaserDepth = v (r5_depth);
-        p.phaserFeedback = v (r5_feedback);
-        p.phaserMix = mod01 (v (r5_mix), ModDest::PhaserMix);
-
-        p.flangerRate = v (r6_rate);
-        p.flangerDepth = v (r6_depth);
-        p.flangerFeedback = v (r6_feedback);
-        p.flangerMix = mod01 (v (r6_mix), ModDest::FlangerMix);
-
-        p.delaySync = v (r7_sync) > 0.5f;
-        p.delayBeats = dsp::divisions[(size_t) std::clamp (juce::roundToInt (v (r7_div)), 0, dsp::numDivisions - 1)].beats;
-        p.delayTimeMs = v (r7_time);
-        p.delayFeedback = std::clamp (v (r7_feedback) + m[(size_t) ModDest::DelayFeedback], 0.0f, 0.95f);
-        p.delayPingPong = v (r7_pingpong) > 0.5f;
-        p.delayDamp = v (r7_damp);
-        p.delayDuck = v (r7_duck);
-        p.delayMix = mod01 (v (r7_mix), ModDest::DelayMix);
-
-        p.reverbSize = mod01 (v (r8_size), ModDest::ReverbSize);
-        p.reverbDecay = v (r8_decay);
-        p.reverbDamp = v (r8_damp);
-        p.reverbPredelay = v (r8_predelay);
-        p.reverbWidth = v (r8_width);
-        p.reverbMix = mod01 (v (r8_mix), ModDest::ReverbMix);
-
-        p.width = std::clamp (v (r9_amount) + m[(size_t) ModDest::StereoWidth], 0.0f, 2.0f);
+        auto add01 = [&] (fx::Param p, float amount) { out[(size_t) p] = std::clamp (out[(size_t) p] + amount, 0.0f, 1.0f); };
+        add01 (fx::FxSatDrive, m[(size_t) ModDest::FxDrive]);
+        add01 (fx::FxMotMix, m[(size_t) ModDest::ChorusMix] + m[(size_t) ModDest::PhaserMix] + m[(size_t) ModDest::FlangerMix]);
+        add01 (fx::FxDlyMix, m[(size_t) ModDest::DelayMix]);
+        add01 (fx::FxVerbMix, m[(size_t) ModDest::ReverbMix]);
+        add01 (fx::FxVerbSize, m[(size_t) ModDest::ReverbSize]);
+        add01 (fx::FxLofiMix, m[(size_t) ModDest::CrushMix]);
+        out[(size_t) fx::FxDlyFeedback] = std::clamp (out[(size_t) fx::FxDlyFeedback] + m[(size_t) ModDest::DelayFeedback], 0.0f, 0.95f);
+        out[(size_t) fx::FxWidthAmount] = std::clamp (out[(size_t) fx::FxWidthAmount] + m[(size_t) ModDest::StereoWidth], 0.0f, 2.0f);
     }
 
     // ---------------------------------------------------------------------------------------------
