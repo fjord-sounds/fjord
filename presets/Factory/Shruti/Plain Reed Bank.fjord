@@ -145,12 +145,12 @@
   <Param id="noise_level" value="0.03084"/>
   <Param id="osc1_level" value="0.7158"/>
   <Param id="osc1_wave" value="2.0"/>
-  <Param id="osc2_fine" value="3.0"/>
+  <Param id="osc2_fine" value="0.0"/>
   <Param id="osc2_level" value="0.395"/>
   <Param id="osc2_octave" value="0.0"/>
   <Param id="osc2_on" value="1.0"/>
   <Param id="osc2_pw" value="0.4111"/>
   <Param id="osc2_semi" value="0.0"/>
   <Param id="osc2_wave" value="3.0"/>
-  <Param id="preset_level" value="-5.1"/>
+  <Param id="preset_level" value="-1.8"/>
 </FjordPreset>

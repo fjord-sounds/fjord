@@ -92,8 +92,8 @@
   <Param id="fx_width_haas" value="0.0"/>
   <Param id="fx_width_mono" value="20.0"/>
   <Param id="fx_width_on" value="0.0"/>
-  <Param id="lfo1_rate" value="6.616"/>
-  <Param id="lfo1_shape" value="0.0"/>
+  <Param id="lfo1_rate" value="0.2341"/>
+  <Param id="lfo1_shape" value="6.0"/>
   <Param id="lfo2_fade" value="0.4053"/>
   <Param id="lfo2_rate" value="5.603"/>
   <Param id="lfo2_retrig" value="1.0"/>
@@ -129,8 +129,8 @@
   <Param id="mod16_dst" value="14.0"/>
   <Param id="mod16_src" value="20.0"/>
   <Param id="mod16_via" value="0.0"/>
-  <Param id="mod1_amt" value="0.001796"/>
-  <Param id="mod1_dst" value="1.0"/>
+  <Param id="mod1_amt" value="0.06983"/>
+  <Param id="mod1_dst" value="24.0"/>
   <Param id="mod1_src" value="1.0"/>
   <Param id="mod1_via" value="0.0"/>
   <Param id="mod8_amt" value="0.2565"/>
@@ -167,5 +167,5 @@
   <Param id="osc3_table" value="6.0"/>
   <Param id="osc3_wave" value="4.0"/>
   <Param id="osc3_wtpos" value="0.4011"/>
-  <Param id="preset_level" value="-2.9"/>
+  <Param id="preset_level" value="-2.6"/>
 </FjordPreset>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FjordPreset name="Organic House Drone" category="Shruti" author="Fjord" macros="Tone|Motion|Space|Attack|Release|Vibrato|Drive|Detune" tags="Soft,Pulsing,Pumping,Slow Attack,House,Ambient">
+<FjordPreset name="Organic House Drone" category="Shruti" author="Fjord" macros="Tone|Motion|Space|Attack|Release|Vibrato|Drive|Detune" tags="Soft,Slow Attack,House,Ambient">
   <Param id="amp_attack" value="0.2986"/>
   <Param id="amp_decay" value="1.023"/>
   <Param id="amp_release" value="1.168"/>
@@ -159,10 +159,5 @@
   <Param id="osc2_table" value="3.0"/>
   <Param id="osc2_wave" value="4.0"/>
   <Param id="osc2_wtpos" value="0.4507"/>
-  <Param id="preset_level" value="-5.8"/>
-  <Param id="pump_curve" value="0.9986"/>
-  <Param id="pump_depth" value="0.3588"/>
-  <Param id="pump_on" value="1.0"/>
-  <Param id="pump_rate" value="7.0"/>
-  <Param id="pump_release" value="0.6694"/>
+  <Param id="preset_level" value="-6.7"/>
 </FjordPreset>

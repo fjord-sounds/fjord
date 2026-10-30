@@ -150,7 +150,7 @@
   <Param id="osc1_pw" value="0.4198"/>
   <Param id="osc1_semi" value="0.0"/>
   <Param id="osc1_wave" value="2.0"/>
-  <Param id="osc2_fine" value="0.8"/>
+  <Param id="osc2_fine" value="0.0"/>
   <Param id="osc2_level" value="0.4604"/>
   <Param id="osc2_octave" value="0.0"/>
   <Param id="osc2_on" value="1.0"/>
@@ -158,7 +158,7 @@
   <Param id="osc2_pw" value="0.4148"/>
   <Param id="osc2_semi" value="0.0"/>
   <Param id="osc2_wave" value="2.0"/>
-  <Param id="osc3_fine" value="1.2"/>
+  <Param id="osc3_fine" value="2.0"/>
   <Param id="osc3_level" value="0.3482"/>
   <Param id="osc3_octave" value="0.0"/>
   <Param id="osc3_on" value="1.0"/>
@@ -166,7 +166,7 @@
   <Param id="osc3_pw" value="0.4127"/>
   <Param id="osc3_semi" value="7.0"/>
   <Param id="osc3_wave" value="3.0"/>
-  <Param id="osc4_fine" value="0.5"/>
+  <Param id="osc4_fine" value="0.0"/>
   <Param id="osc4_level" value="0.2513"/>
   <Param id="osc4_octave" value="1.0"/>
   <Param id="osc4_on" value="1.0"/>
@@ -174,7 +174,7 @@
   <Param id="osc4_pw" value="0.4171"/>
   <Param id="osc4_semi" value="0.0"/>
   <Param id="osc4_wave" value="2.0"/>
-  <Param id="osc5_fine" value="-14.5"/>
+  <Param id="osc5_fine" value="-14.0"/>
   <Param id="osc5_level" value="0.1169"/>
   <Param id="osc5_octave" value="1.0"/>
   <Param id="osc5_on" value="1.0"/>
@@ -182,7 +182,7 @@
   <Param id="osc5_pw" value="0.4307"/>
   <Param id="osc5_semi" value="4.0"/>
   <Param id="osc5_wave" value="1.0"/>
-  <Param id="osc6_fine" value="3.1"/>
+  <Param id="osc6_fine" value="2.0"/>
   <Param id="osc6_level" value="0.1168"/>
   <Param id="osc6_octave" value="1.0"/>
   <Param id="osc6_on" value="1.0"/>
@@ -190,7 +190,7 @@
   <Param id="osc6_pw" value="0.4311"/>
   <Param id="osc6_semi" value="7.0"/>
   <Param id="osc6_wave" value="1.0"/>
-  <Param id="osc7_fine" value="-1.1"/>
+  <Param id="osc7_fine" value="0.0"/>
   <Param id="osc7_level" value="0.08175"/>
   <Param id="osc7_octave" value="2.0"/>
   <Param id="osc7_on" value="1.0"/>
@@ -198,5 +198,5 @@
   <Param id="osc7_pw" value="0.4208"/>
   <Param id="osc7_semi" value="0.0"/>
   <Param id="osc7_wave" value="0.0"/>
-  <Param id="preset_level" value="-4.7"/>
+  <Param id="preset_level" value="-4.2"/>
 </FjordPreset>

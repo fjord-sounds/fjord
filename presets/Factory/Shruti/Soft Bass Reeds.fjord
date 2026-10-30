@@ -149,7 +149,7 @@
   <Param id="osc1_on" value="1.0"/>
   <Param id="osc1_semi" value="0.0"/>
   <Param id="osc1_wave" value="2.0"/>
-  <Param id="osc2_fine" value="1.2"/>
+  <Param id="osc2_fine" value="0.0"/>
   <Param id="osc2_level" value="0.3407"/>
   <Param id="osc2_octave" value="0.0"/>
   <Param id="osc2_on" value="1.0"/>

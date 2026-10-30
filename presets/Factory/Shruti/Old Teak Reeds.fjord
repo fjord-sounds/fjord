@@ -9,7 +9,7 @@
   <Param id="filter2_on" value="1.0"/>
   <Param id="filter2_type" value="4.0"/>
   <Param id="filter_cutoff" value="883.1"/>
-  <Param id="filter_drive" value="0.09813"/>
+  <Param id="filter_drive" value="0.2944"/>
   <Param id="filter_keytrack" value="0.5"/>
   <Param id="filter_reso" value="0.1232"/>
   <Param id="filter_type" value="1.0"/>
@@ -167,6 +167,5 @@
   <Param id="osc3_table" value="3.0"/>
   <Param id="osc3_wave" value="4.0"/>
   <Param id="osc3_wtpos" value="0.3946"/>
-  <Param id="preset_level" value="-8.0"/>
-  <Param id="voice_analog" value="0.5138"/>
+  <Param id="preset_level" value="-9.4"/>
 </FjordPreset>

@@ -299,9 +299,10 @@ the Filter effect restarts with every note you play, and effect parameters can b
 - Factory presets: `presets/Factory/<category>/*.fjord` (embedded in the plugin)
 - User presets: `~/Music/Fjord/Presets` (Windows: `Documents\\Fjord\\Presets` – the user's music folder; save via the ⤓ icon or in the browser)
 - Categories: Pad, Atmos, Shruti, Lead, Pluck, Keys, Bass, Arp, Gated, Drums, FX
-- Shruti: 100 shruti box drones – bellows-driven free reeds in just intonation (Pa, Ma, Ni, Ga …). Most hold the
-  drone in the oscillators (one key plays Sa–Pa–Sa', like the real box), some are single reeds for your own
-  intervals, some fill all eight oscillators; from traditional boxes to bedroom, pop, house and ambient drones
+- Shruti: 100 shruti box drones – bellows-driven free reeds in just intonation (Pa, Ma, Ni, Ga …), steady and
+  in tune: no rhythm, no unison detune. Most hold the drone in the oscillators (one key plays Sa–Pa–Sa', like the
+  real box), some are single reeds for your own intervals, some fill all eight oscillators; from traditional boxes
+  to bedroom, pop, house and ambient drones
 - Tags: every factory preset has tags for character, movement, space, shape and style; your own presets get the
   tags you type in the save dialog (prefilled with the tags of the preset you started from)
 - Effect chains (all effects): at the top of the FX page; user chains live in `~/Music/Fjord/FX Chains`.

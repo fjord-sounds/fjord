@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FjordPreset name="Melodic House Reeds" category="Shruti" author="Fjord" macros="Tone|Resonance|Space|Attack|Release|Vibrato|Drive|Detune" tags="Soft,Pulsing,Pumping,Echo,Layered,House">
-  <Param id="amp_attack" value="0.2009"/>
+<FjordPreset name="Melodic House Reeds" category="Shruti" author="Fjord" macros="Tone|Resonance|Space|Attack|Release|Vibrato|Drive|Detune" tags="Soft,Evolving,Echo,Slow Attack,Long Tail,Layered,House">
+  <Param id="amp_attack" value="0.4018"/>
   <Param id="amp_decay" value="1.014"/>
-  <Param id="amp_release" value="1.189"/>
+  <Param id="amp_release" value="1.585"/>
   <Param id="amp_sustain" value="1.0"/>
   <Param id="amp_vel" value="0.1515"/>
   <Param id="filter2_cutoff" value="87.78"/>
@@ -96,27 +96,26 @@
   <Param id="lfo2_rate" value="5.394"/>
   <Param id="lfo2_retrig" value="1.0"/>
   <Param id="lfo2_shape" value="0.0"/>
-  <Param id="lfo3_div" value="1.0"/>
+  <Param id="lfo3_rate" value="0.03035"/>
   <Param id="lfo3_shape" value="1.0"/>
-  <Param id="lfo3_sync" value="1.0"/>
   <Param id="macro1" value="0.5"/>
-  <Param id="mod10_amt" value="0.4533"/>
+  <Param id="mod10_amt" value="0.4397"/>
   <Param id="mod10_dst" value="37.0"/>
   <Param id="mod10_src" value="15.0"/>
   <Param id="mod10_via" value="0.0"/>
-  <Param id="mod11_amt" value="0.6121"/>
+  <Param id="mod11_amt" value="0.6164"/>
   <Param id="mod11_dst" value="29.0"/>
   <Param id="mod11_src" value="16.0"/>
   <Param id="mod11_via" value="0.0"/>
-  <Param id="mod12_amt" value="0.6009"/>
+  <Param id="mod12_amt" value="0.61"/>
   <Param id="mod12_dst" value="30.0"/>
   <Param id="mod12_src" value="17.0"/>
   <Param id="mod12_via" value="0.0"/>
-  <Param id="mod13_amt" value="0.01228"/>
+  <Param id="mod13_amt" value="0.01184"/>
   <Param id="mod13_dst" value="1.0"/>
   <Param id="mod13_src" value="2.0"/>
   <Param id="mod13_via" value="18.0"/>
-  <Param id="mod14_amt" value="0.0118"/>
+  <Param id="mod14_amt" value="0.01229"/>
   <Param id="mod14_dst" value="1.0"/>
   <Param id="mod14_src" value="2.0"/>
   <Param id="mod14_via" value="9.0"/>
@@ -124,53 +123,39 @@
   <Param id="mod15_dst" value="20.0"/>
   <Param id="mod15_src" value="19.0"/>
   <Param id="mod15_via" value="0.0"/>
-  <Param id="mod16_amt" value="0.3909"/>
+  <Param id="mod16_amt" value="0.3913"/>
   <Param id="mod16_dst" value="14.0"/>
   <Param id="mod16_src" value="20.0"/>
   <Param id="mod16_via" value="0.0"/>
-  <Param id="mod1_amt" value="0.1415"/>
+  <Param id="mod1_amt" value="0.1381"/>
   <Param id="mod1_dst" value="18.0"/>
   <Param id="mod1_src" value="3.0"/>
   <Param id="mod1_via" value="0.0"/>
-  <Param id="mod8_amt" value="0.2498"/>
+  <Param id="mod8_amt" value="0.2452"/>
   <Param id="mod8_dst" value="18.0"/>
   <Param id="mod8_src" value="13.0"/>
   <Param id="mod8_via" value="0.0"/>
-  <Param id="mod9_amt" value="0.4939"/>
+  <Param id="mod9_amt" value="0.5028"/>
   <Param id="mod9_dst" value="19.0"/>
   <Param id="mod9_src" value="14.0"/>
   <Param id="mod9_via" value="0.0"/>
-  <Param id="osc1_detune" value="0.06919"/>
   <Param id="osc1_fine" value="0.0"/>
-  <Param id="osc1_level" value="0.4003"/>
+  <Param id="osc1_level" value="0.3954"/>
   <Param id="osc1_octave" value="-1.0"/>
   <Param id="osc1_on" value="1.0"/>
   <Param id="osc1_semi" value="0.0"/>
-  <Param id="osc1_spread" value="0.5853"/>
-  <Param id="osc1_unison" value="2.0"/>
   <Param id="osc1_wave" value="2.0"/>
-  <Param id="osc2_detune" value="0.06909"/>
   <Param id="osc2_fine" value="0.0"/>
-  <Param id="osc2_level" value="0.4446"/>
+  <Param id="osc2_level" value="0.439"/>
   <Param id="osc2_octave" value="0.0"/>
   <Param id="osc2_on" value="1.0"/>
   <Param id="osc2_semi" value="0.0"/>
-  <Param id="osc2_spread" value="0.5854"/>
-  <Param id="osc2_unison" value="2.0"/>
   <Param id="osc2_wave" value="2.0"/>
-  <Param id="osc3_detune" value="0.06903"/>
   <Param id="osc3_fine" value="2.0"/>
-  <Param id="osc3_level" value="0.3518"/>
+  <Param id="osc3_level" value="0.3539"/>
   <Param id="osc3_octave" value="0.0"/>
   <Param id="osc3_on" value="1.0"/>
   <Param id="osc3_semi" value="7.0"/>
-  <Param id="osc3_spread" value="0.5854"/>
-  <Param id="osc3_unison" value="2.0"/>
   <Param id="osc3_wave" value="2.0"/>
-  <Param id="preset_level" value="-0.9"/>
-  <Param id="pump_curve" value="1.028"/>
-  <Param id="pump_depth" value="0.4507"/>
-  <Param id="pump_on" value="1.0"/>
-  <Param id="pump_rate" value="7.0"/>
-  <Param id="pump_release" value="0.5908"/>
+  <Param id="preset_level" value="-3.6"/>
 </FjordPreset>

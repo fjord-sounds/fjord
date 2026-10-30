@@ -4,8 +4,9 @@ All notable changes to Fjord. The format follows [Keep a Changelog](https://keep
 versions follow [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
-- New preset category **Shruti** with 100 shruti box presets: bellows-driven reed drones in just intonation – boxes
-  that play Sa–Pa–Sa' from one key, single reeds, eight-oscillator boxes, bedroom, pop, house and ambient drones.
+- New preset category **Shruti** with 100 shruti box presets: steady bellows-driven reed drones in just intonation,
+  without rhythm or detuning – boxes that play Sa–Pa–Sa' from one key, single reeds, eight-oscillator boxes, bedroom,
+  pop, house and ambient drones.
 
 ## [0.2.0] – 2026-10-14
 - Built on [fjord-base](https://github.com/fjord-sounds/fjord-base), the code shared by all Fjord plugins: clone it next to

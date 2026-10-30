@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FjordPreset name="Bowed Shruti" category="Shruti" author="Fjord" macros="Tone|Motion|Space|Attack|Release|Sub|Drive|Detune" tags="Soft,Evolving,Slow Attack,Long Tail">
+<FjordPreset name="Bowed Shruti" category="Shruti" author="Fjord" macros="Tone|Motion|Space|Attack|Release|Vibrato|Drive|Detune" tags="Soft,Evolving,Slow Attack,Long Tail">
   <Param id="amp_attack" value="1.12"/>
   <Param id="amp_decay" value="1.012"/>
   <Param id="amp_release" value="1.995"/>
@@ -94,8 +94,8 @@
   <Param id="fx_width_on" value="0.0"/>
   <Param id="lfo1_rate" value="0.3056"/>
   <Param id="lfo1_shape" value="6.0"/>
-  <Param id="lfo2_fade" value="1.53"/>
-  <Param id="lfo2_rate" value="4.85"/>
+  <Param id="lfo2_fade" value="0.4081"/>
+  <Param id="lfo2_rate" value="5.557"/>
   <Param id="lfo2_retrig" value="1.0"/>
   <Param id="lfo2_shape" value="0.0"/>
   <Param id="lfo3_rate" value="0.3587"/>
@@ -113,30 +113,30 @@
   <Param id="mod12_dst" value="30.0"/>
   <Param id="mod12_src" value="17.0"/>
   <Param id="mod12_via" value="0.0"/>
-  <Param id="mod13_amt" value="0.6152"/>
-  <Param id="mod13_dst" value="16.0"/>
-  <Param id="mod13_src" value="18.0"/>
-  <Param id="mod13_via" value="0.0"/>
-  <Param id="mod14_amt" value="0.6093"/>
-  <Param id="mod14_dst" value="20.0"/>
-  <Param id="mod14_src" value="19.0"/>
-  <Param id="mod14_via" value="0.0"/>
-  <Param id="mod15_amt" value="0.4066"/>
-  <Param id="mod15_dst" value="14.0"/>
-  <Param id="mod15_src" value="20.0"/>
+  <Param id="mod13_amt" value="0.0123"/>
+  <Param id="mod13_dst" value="1.0"/>
+  <Param id="mod13_src" value="2.0"/>
+  <Param id="mod13_via" value="18.0"/>
+  <Param id="mod14_amt" value="0.01219"/>
+  <Param id="mod14_dst" value="1.0"/>
+  <Param id="mod14_src" value="2.0"/>
+  <Param id="mod14_via" value="9.0"/>
+  <Param id="mod15_amt" value="0.6099"/>
+  <Param id="mod15_dst" value="20.0"/>
+  <Param id="mod15_src" value="19.0"/>
   <Param id="mod15_via" value="0.0"/>
-  <Param id="mod1_amt" value="0.07208"/>
+  <Param id="mod16_amt" value="0.4119"/>
+  <Param id="mod16_dst" value="14.0"/>
+  <Param id="mod16_src" value="20.0"/>
+  <Param id="mod16_via" value="0.0"/>
+  <Param id="mod1_amt" value="0.06845"/>
   <Param id="mod1_dst" value="24.0"/>
   <Param id="mod1_src" value="1.0"/>
   <Param id="mod1_via" value="0.0"/>
-  <Param id="mod2_amt" value="0.004889"/>
-  <Param id="mod2_dst" value="1.0"/>
-  <Param id="mod2_src" value="2.0"/>
+  <Param id="mod2_amt" value="0.05993"/>
+  <Param id="mod2_dst" value="18.0"/>
+  <Param id="mod2_src" value="1.0"/>
   <Param id="mod2_via" value="0.0"/>
-  <Param id="mod3_amt" value="0.05993"/>
-  <Param id="mod3_dst" value="18.0"/>
-  <Param id="mod3_src" value="1.0"/>
-  <Param id="mod3_via" value="0.0"/>
   <Param id="mod8_amt" value="0.2538"/>
   <Param id="mod8_dst" value="18.0"/>
   <Param id="mod8_src" value="13.0"/>
@@ -153,11 +153,11 @@
   <Param id="osc1_on" value="1.0"/>
   <Param id="osc1_semi" value="0.0"/>
   <Param id="osc1_wave" value="2.0"/>
-  <Param id="osc2_fine" value="2.6"/>
+  <Param id="osc2_fine" value="2.0"/>
   <Param id="osc2_level" value="0.4158"/>
   <Param id="osc2_octave" value="0.0"/>
   <Param id="osc2_on" value="1.0"/>
   <Param id="osc2_semi" value="7.0"/>
   <Param id="osc2_wave" value="2.0"/>
-  <Param id="preset_level" value="-1.8"/>
+  <Param id="preset_level" value="-1.7"/>
 </FjordPreset>

@@ -73,7 +73,7 @@
   <Param id="fx_reverb_duck" value="0.0"/>
   <Param id="fx_reverb_freeze" value="0.0"/>
   <Param id="fx_reverb_lowcut" value="20.0"/>
-  <Param id="fx_reverb_mix" value="0.4908"/>
+  <Param id="fx_reverb_mix" value="0.4294"/>
   <Param id="fx_reverb_mod" value="0.3"/>
   <Param id="fx_reverb_mode" value="5.0"/>
   <Param id="fx_reverb_on" value="1.0"/>

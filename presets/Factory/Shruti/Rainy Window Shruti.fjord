@@ -92,7 +92,7 @@
   <Param id="fx_width_haas" value="0.0"/>
   <Param id="fx_width_mono" value="20.0"/>
   <Param id="fx_width_on" value="0.0"/>
-  <Param id="lfo1_rate" value="0.9226"/>
+  <Param id="lfo1_rate" value="0.1333"/>
   <Param id="lfo1_shape" value="6.0"/>
   <Param id="lfo2_fade" value="0.4095"/>
   <Param id="lfo2_rate" value="5.43"/>
@@ -129,8 +129,8 @@
   <Param id="mod16_dst" value="14.0"/>
   <Param id="mod16_src" value="20.0"/>
   <Param id="mod16_via" value="0.0"/>
-  <Param id="mod1_amt" value="0.003519"/>
-  <Param id="mod1_dst" value="1.0"/>
+  <Param id="mod1_amt" value="0.06033"/>
+  <Param id="mod1_dst" value="24.0"/>
   <Param id="mod1_src" value="1.0"/>
   <Param id="mod1_via" value="0.0"/>
   <Param id="mod8_amt" value="0.2505"/>
@@ -161,11 +161,11 @@
   <Param id="osc3_on" value="1.0"/>
   <Param id="osc3_semi" value="0.0"/>
   <Param id="osc3_wave" value="1.0"/>
-  <Param id="osc4_fine" value="-3.0"/>
+  <Param id="osc4_fine" value="0.0"/>
   <Param id="osc4_level" value="0.256"/>
   <Param id="osc4_octave" value="0.0"/>
   <Param id="osc4_on" value="1.0"/>
   <Param id="osc4_semi" value="0.0"/>
   <Param id="osc4_wave" value="2.0"/>
-  <Param id="preset_level" value="-6.3"/>
+  <Param id="preset_level" value="-5.4"/>
 </FjordPreset>

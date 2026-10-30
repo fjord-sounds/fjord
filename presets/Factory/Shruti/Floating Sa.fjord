@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FjordPreset name="Floating Sa" category="Shruti" author="Fjord" macros="Tone|Motion|Space|Attack|Release|Vibrato|Drive|Detune" tags="Soft,Wide,Spacey,Slow Attack,Long Tail,Layered,Ambient">
+<FjordPreset name="Floating Sa" category="Shruti" author="Fjord" macros="Tone|Motion|Space|Attack|Release|Vibrato|Drive|Detune" tags="Soft,Wide,Spacey,Slow Attack,Long Tail,Sub,Layered,Ambient">
   <Param id="amp_attack" value="1.588"/>
   <Param id="amp_decay" value="1.013"/>
   <Param id="amp_release" value="4.613"/>
@@ -155,14 +155,17 @@
   <Param id="osc2_on" value="1.0"/>
   <Param id="osc2_semi" value="0.0"/>
   <Param id="osc2_wave" value="1.0"/>
-  <Param id="osc3_detune" value="0.04965"/>
   <Param id="osc3_fine" value="0.0"/>
-  <Param id="osc3_level" value="0.2531"/>
-  <Param id="osc3_octave" value="0.0"/>
+  <Param id="osc3_level" value="0.295"/>
+  <Param id="osc3_octave" value="-1.0"/>
   <Param id="osc3_on" value="1.0"/>
   <Param id="osc3_semi" value="0.0"/>
-  <Param id="osc3_spread" value="0.874"/>
-  <Param id="osc3_unison" value="3.0"/>
-  <Param id="osc3_wave" value="2.0"/>
-  <Param id="preset_level" value="-3.3"/>
+  <Param id="osc3_wave" value="0.0"/>
+  <Param id="osc4_fine" value="0.0"/>
+  <Param id="osc4_level" value="0.197"/>
+  <Param id="osc4_octave" value="0.0"/>
+  <Param id="osc4_on" value="1.0"/>
+  <Param id="osc4_semi" value="0.0"/>
+  <Param id="osc4_wave" value="2.0"/>
+  <Param id="preset_level" value="-1.6"/>
 </FjordPreset>
