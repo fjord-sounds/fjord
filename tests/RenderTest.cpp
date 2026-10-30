@@ -250,6 +250,7 @@ static int measureLoudness (const juce::File& outFile)
         if (preset.category == "Bass") notes = { 36 };
         if (preset.category == "Lead") notes = { 60 };
         if (preset.category == "Drums") notes = { 36 };
+        if (preset.category == "Shruti") notes = { 48, 55 };   // a drone is held with one or two keys, not a chord
 
         juce::AudioBuffer<float> buf (2, block);
         double sum = 0.0, peak = 0.0;

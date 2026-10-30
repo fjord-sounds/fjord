@@ -6,7 +6,7 @@
 # Fjord
 
 A software synthesizer for every common DAW – VST3, Audio Unit, LV2 and a standalone app – with a warm,
-soft sound, a Scandinavian minimalist interface (light/dark) and over 1,800 factory presets.
+soft sound, a Scandinavian minimalist interface (light/dark) and over 1,900 factory presets.
 Every sound is synthesized in real time – there are no samples.
 
 [![CI](https://github.com/fjord-sounds/fjord/actions/workflows/ci.yml/badge.svg)](https://github.com/fjord-sounds/fjord/actions/workflows/ci.yml)
@@ -19,7 +19,7 @@ Every sound is synthesized in real time – there are no samples.
 
 ## Lightweight
 
-- **Small**: the VST3 is about 18 MB (macOS universal binary, arm64 + x86_64), including 1,800+ factory presets and the font.
+- **Small**: the VST3 is about 18 MB (macOS universal binary, arm64 + x86_64), including 1,900+ factory presets and the font.
 - **Self-contained**: no sample library, no extra files to install, no installer data, no account, no network access.
   Presets and the font are compiled into the plugin.
 - **Calm on the audio thread**: no allocations or locks while rendering sound.
@@ -298,7 +298,10 @@ the Filter effect restarts with every note you play, and effect parameters can b
 
 - Factory presets: `presets/Factory/<category>/*.fjord` (embedded in the plugin)
 - User presets: `~/Music/Fjord/Presets` (Windows: `Documents\\Fjord\\Presets` – the user's music folder; save via the ⤓ icon or in the browser)
-- Categories: Pad, Atmos, Lead, Pluck, Keys, Bass, Arp, Gated, Drums, FX
+- Categories: Pad, Atmos, Shruti, Lead, Pluck, Keys, Bass, Arp, Gated, Drums, FX
+- Shruti: 100 shruti box drones – bellows-driven free reeds in just intonation (Pa, Ma, Ni, Ga …). Most hold the
+  drone in the oscillators (one key plays Sa–Pa–Sa', like the real box), some are single reeds for your own
+  intervals, some fill all eight oscillators; from traditional boxes to bedroom, pop, house and ambient drones
 - Tags: every factory preset has tags for character, movement, space, shape and style; your own presets get the
   tags you type in the save dialog (prefilled with the tags of the preset you started from)
 - Effect chains (all effects): at the top of the FX page; user chains live in `~/Music/Fjord/FX Chains`.

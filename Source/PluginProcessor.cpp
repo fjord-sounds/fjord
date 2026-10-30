@@ -24,7 +24,7 @@ const fjord::base::Brand& fjord::base::brand()
         x.glowDark = 0.16f;
         x.glowLight = 0.10f;
         x.flash = juce::Colour (0xffd8fff0);
-        x.categories = { "Pad", "Atmos", "Lead", "Pluck", "Keys", "Bass", "Arp", "Gated", "Drums", "FX" };
+        x.categories = { "Pad", "Atmos", "Shruti", "Lead", "Pluck", "Keys", "Bass", "Arp", "Gated", "Drums", "FX" };
         x.categoryLabels = { { "Pad", "Pads" }, { "Lead", "Leads" }, { "Pluck", "Plucks" }, { "Arp", "Arps" } };
         x.tags = { "Warm", "Bright", "Dark", "Soft", "Airy", "Glassy", "Vocal", "Bell", "Gritty", "Acid", "Supersaw",
                    "Evolving", "Pulsing", "Arpeggiated", "Melody", "Gated", "Pumping", "Stutter",
